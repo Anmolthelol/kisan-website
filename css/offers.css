@@ -1,0 +1,45 @@
+
+.col-form-label{
+  font-size: 10pt;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}.pair-group-item {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: -1px;
+  position: relative;
+}
+.pair-group-item:not(.description):before, .pair-group-item:not(.description):after {
+  content: " ";
+  display: table;
+}
+
+.pair-group-item:not(.description):after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.pair-group-item .pair-label {
+  width: 39%;
+  color: #8991ae;
+  padding: 0;
+  vertical-align: top;
+  float: left;
+}
+.pair-group-item .pair-value {
+  position: relative;
+  width: 60%;
+  padding-left: 40px;
+  word-break: break-all;
+  vertical-align: top;
+  float: left;
+}
+.pair-group-item .pair-value > span {
+  vertical-align: top;
+}
+.label--primary {
+  color: #58666e;
+} 
+table td {
+  font-size: 0.8rem!important;
+  font-weight: 400;
+}

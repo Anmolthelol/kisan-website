@@ -1,0 +1,119 @@
+.card-body .background-round {
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.18);
+}
+.card {
+  border: 0;
+  margin: 18px 0;
+  box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+}
+.tab {
+  margin-top: 0px;
+  position: relative;
+  box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.25);
+
+}
+
+.tab a {
+  padding-left: 60px;
+  color: white;
+}
+
+.tab .nav-link {
+  position: relative;
+  z-index: 99;
+}
+
+.panel {
+  content: "";
+  position: absolute;
+  margin-left: 0px;
+  width: 275px;
+  height: 100%;
+  cursor: pointer;
+  z-index: 1;
+  background: transparent;
+  box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 1px 0px 20px 0px rgba(0, 0, 0, 0.25);
+}
+
+.innercontent {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.card-title span {
+  color: #787c89 !important;
+  font-weight: bolder;
+}
+.libtn {
+  width: 100%;
+  background: transparent;
+  border-width: 5px;
+  border-color: #333743;
+  outline: none;
+}
+.libtn:focus {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+          box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+  color: white;
+  font-weight: bolder;
+}
+.myactive,.pagination .active {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+          box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+  color: white!important;
+  font-weight: bolder;
+}
+.btnaccept {
+  background: linear-gradient(45deg, #43a047, #1de9b6) !important;
+  -webkit-box-shadow: 0 6px 20px 0 rgba(29, 233, 182, 0.5) !important;
+          box-shadow: 0 6px 20px 0 rgba(29, 233, 182, 0.5) !important;
+  height: 35px;
+  width: 95px;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.btnreject {
+  background: linear-gradient(45deg, #ff5252, #f48fb1) !important;
+  -webkit-box-shadow: 0px 5px 30px 0px #f34b6073 !important;
+          box-shadow: 0px 5px 30px 0px #f34b6073 !important;
+  height: 35px;
+  width: 95px;
+  color: #ffffff !important;
+  font-weight: 600;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  text-align: center;
+}
+.btndisabled{
+    color: #ffffff !important;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    height: 35px;
+    width: 95px;
+    font-weight: 600;
+    border-radius: 6px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+.dataTables_wrapper .row{
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+
+}
+@media screen and (max-width: 600px) {
+  .orderstatus{
+    width: 70%!important;
+  }
+}

@@ -1,0 +1,204 @@
+body {
+  margin: 0;
+  font-family: "Montserrat", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  
+  background-color: #f9f9f9;
+
+}
+.w3-lobster {
+  font-family: "Lobster", serif;
+  font-size: 1rem!important;
+  letter-spacing: 3px;
+
+}
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+.w3-myfont {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.bg-blue {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+}
+
+.bg-red {
+  background: linear-gradient(45deg, #ff5252, #f48fb1) !important;
+}
+
+.bg-green {
+  background: linear-gradient(45deg, #43a047, #1de9b6) !important;
+}
+
+.bg-orenge {
+  background: linear-gradient(45deg, #ff6f00, #ffca28) !important;
+}
+
+.bg-shadow-blue {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+  -webkit-box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5) !important;
+  box-shadow: 0 6px 20px 0 rgba(38, 198, 218, 0.5) !important;
+}
+
+.bg-shadow-red {
+  background: linear-gradient(45deg, #ff5252, #f48fb1) !important;
+  -webkit-box-shadow: 0 6px 20px 0 rgba(244, 143, 177, 0.5) !important;
+  box-shadow: 0 6px 20px 0 rgba(244, 143, 177, 0.5) !important;
+}
+
+.bg-shadow-orenge {
+  background: linear-gradient(45deg, #ff6f00, #ffca28) !important;
+  -webkit-box-shadow: 0 6px 20px 0 rgba(255, 202, 40, 0.5) !important;
+  box-shadow: 0 6px 20px 0 rgba(255, 202, 40, 0.5) !important;
+}
+
+.bg-shadow-green {
+  background: linear-gradient(45deg, #43a047, #1de9b6) !important;
+  -webkit-box-shadow: 0 6px 20px 0 rgba(29, 233, 182, 0.5) !important;
+  box-shadow: 0 6px 20px 0 rgba(29, 233, 182, 0.5) !important;
+}
+.bg-shadow-skyblue{
+  background: linear-gradient(45deg, #fc6767, #eb0990) !important;
+  box-shadow: 0 6px 20px 0 rgba(236, 4, 113, 0.5) !important;
+
+  
+}
+
+.navbar-custom {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+}
+
+.navbar-custom .navbar-text {
+  color: whitesmoke;
+  padding: 5px;
+}
+
+.navbar-custom .navbar-logo {
+  color: whitesmoke;
+  padding-left: 15px;
+  width: 25px;
+}
+
+.navbar-custom .iconsizenotification {
+  font-size: 25px;
+}
+
+.navbar-custom .iconsizeuser {
+  font-size: 20px;
+}
+.nav-link .badge{
+  color:black!important;
+}
+.nav-item .waves-effect {
+  overflow: inherit!important;
+}
+.sidebar {
+  width: 85px !important;
+  top: 50px;
+  left: 0px;
+  background-color: white;
+  min-height: calc(100vh - 56px);
+  position: fixed;
+}
+
+.sidebar .iconsize {
+  font-size: 25px;
+  color: rgba(47, 41, 41, 0.85)!important;
+}
+
+.sidebar .nav-link {
+  color: #787c89!important;
+  font-weight: bolder;
+}
+
+.sidebar .nav-item:last-child {
+  margin-bottom: 1rem;
+}
+
+.sidebar .nav-item .nav-link {
+  text-align: center;
+  padding: 0.75rem 1rem;
+  width: 90px;
+  color: whitesmoke;
+}
+
+.sidebar .nav-item .nav-link span {
+  font-size: 0.60rem;
+  display: block;
+  font-weight: bold;
+  color: #212529!important;
+}
+.conten-body{
+  margin-top: 5%;
+  margin-left: 7%;
+  width: 100%;
+}
+#wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#wrapper #content-wrapper {
+  width: 100%;
+}
+.card-shadow {
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.card-shadow:hover {
+  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25),
+    0 5px 5px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.22);
+}
+
+.border-bottom-dotted {
+  border-bottom: 1px;
+  border-bottom-style: outset;
+}
+.w-90 {
+  width: 90% !important;
+}
+.w-95 {
+  width: 90% !important;
+}
+
+.form-control:focus {
+   color: black!important;
+   box-shadow: none!important;
+   outline: 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.box-shadow{
+  box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06)!important;
+  border: 0px!important;
+}
+@media screen and (max-width: 600px) {
+  .sidebar{
+    display: none;
+    z-index: 99999!important;
+  }
+  a.navbar-logo{
+    display: none;
+  }
+  .navbar-toggler{
+    display: block!important;
+  }
+  .conten-body{
+    margin-top: 60px;
+    margin-left: 10px!important;
+    width: 100%;
+  }
+}

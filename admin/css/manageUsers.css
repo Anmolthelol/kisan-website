@@ -1,0 +1,25 @@
+
+.card-body .background-round {
+  color: white;
+  padding: 15px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.18);
+}
+.card {
+  border: 0;
+  margin: 18px 0;
+  box-shadow: 0 6px 0px 0 rgba(0, 0, 0, 0.01), 0 15px 32px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 4px;
+}
+.myactive,.pagination .active {
+  background: linear-gradient(45deg, #0288d1, #26c6da) !important;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+          box-shadow: 0 2px 5px 0 rgba(38, 198, 218, 0.5) !important;
+  color: white!important;
+  font-weight: bolder;
+}
+.dataTables_wrapper .row{
+  margin-left: 0px!important;
+  margin-right: 0px!important;
+
+}
