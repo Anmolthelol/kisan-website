@@ -15,7 +15,7 @@ function get_safe_value($con,$str){
 		return mysqli_real_escape_string($con,$str);
 	}
 }	
-function get_product($con,$limit='', $cat_id='', $product_id=''){
+function get_product($con,$limit='', $cat_id='', $product_id='',){
 	$sql="select * from product where status=1";
 	if( $cat_id!=''){
 		$sql.=" and category_id=$cat_id";
