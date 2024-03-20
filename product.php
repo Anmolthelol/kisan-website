@@ -62,7 +62,7 @@
                                     <div class="sin__desc align--left">
                                         <p><span>Categories:</span></p>
                                         <ul class="pro__cat__list">
-                                            <li><a href="#">Vehicle</a></li>
+                                            <li><a href="#"><?php echo $get_product['0'] ['categories'] ?></a></li>
                                         </ul>
                                     </div>
                                     
