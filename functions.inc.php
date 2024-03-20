@@ -25,7 +25,7 @@ function get_product($con,$limit='', $cat_id='', $product_id=''){
 		$sql.=" and product.id=$product_id";
 	}
 	$sql.=" and product.category_id=categories.category_id";
-	$sql.=" order by product.id desc";
+	//$sql.=" order by product.id desc";
 	
 	if($limit!=''){
 		$sql.=" limit $limit";

@@ -2,6 +2,7 @@
  $product_id=mysqli_real_escape_string($con,$_GET['id']);
   //$product_name=mysqli_real_escape_string($con,$_GET['id']);
  $get_product=get_product($con,'','',$product_id);
+ //$categories=mysqli_real_escape_string($con,$_GET['id']);
 										
  ?>
   <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -14,8 +15,7 @@
                                   <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                                   <a class="breadcrumb-item" href="categories.php?id=<?php echo $get_product['0']
-								  ['category_id  '] ?>"><?php echo $get_product['0']
-								  ['categories '] ?></a>
+								  ['category_id'] ?>"><?php echo $get_product['0'] ['categories'] ?></a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
                                   <span class="breadcrumb-item active"><?php echo $get_product['0']['product_name'] ?></span>
                                 </nav>
