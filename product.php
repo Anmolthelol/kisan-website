@@ -11,11 +11,12 @@
                         <div class="col-xs-12">
                             <div class="bradcaump__inner">
                                 <nav class="bradcaump-inner">
-                                  <a class="breadcrumb-item" href="index.html">Home</a>
+                                  <a class="breadcrumb-item" href="index.php">Home</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <a class="breadcrumb-item" href="product-grid.html">Equipment</a>
+                                  <a class="breadcrumb-item" href="categories.php?id=<?php echo $get_product['0']
+								  ['category_id '] ?>">Vehicle</a>
                                   <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                                  <span class="breadcrumb-item active"><?php echo $product_name?></span>
+                                  <span class="breadcrumb-item active"><?php echo $get_product['0']['product_name'] ?></span>
                                 </nav>
                             </div>
                         </div>
@@ -36,7 +37,8 @@
                                 <div class="product__big__images">
                                     <div class="portfolio-full-image tab-content">
                                         <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
-                                            <img src="images/product-2/big-img/1.jpg" alt="full-image">
+                                            <img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$get_product['0']['image'] 
+											?>" alt="full-image">
                                         </div>
                                     </div>
                                 </div>
@@ -46,12 +48,12 @@
                         </div>
                         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                             <div class="ht__product__dtl">
-                                <h2>jean shirt to sassy girl</h2>
+                                <h2><?php echo $get_product['0']['product_name'] ?></h2>
                                 <ul  class="pro__prize">
-                                    <li class="old__prize">$82.5</li>
-                                    <li>$75.2</li>
+                                    <li class="old__prize"><?php echo $get_product['0']['mrp'] ?></li>
+                                    <li><?php echo $get_product['0']['price'] ?></li>
                                 </ul>
-                                <p class="pro__info">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsanLorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.  Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan</p>
+                                <p class="pro__info"><?php echo $get_product['0']['short_description'] ?></p>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
@@ -59,7 +61,7 @@
                                     <div class="sin__desc align--left">
                                         <p><span>Categories:</span></p>
                                         <ul class="pro__cat__list">
-                                            <li><a href="#">Fashion,</a></li>
+                                            <li><a href="#">Vehicle</a></li>
                                         </ul>
                                     </div>
                                     
@@ -73,4 +75,34 @@
             <!-- End Product Details Top -->
         </section>
         <!-- End Product Details Area -->
+		  <!-- Start Product Description -->
+    <section class="htc__produc__decription bg__white">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <!-- Start List And Grid View -->
+                    <ul class="pro__details__tab" role="tablist">
+                        <li role="presentation" class="description active"><a href="#description" role="tab"
+                                data-toggle="tab">description</a></li>
+                    </ul>
+                    <!-- End List And Grid View -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="ht__pro__details__content">
+                        <!-- Start Single Content -->
+                        <div role="tabpanel" id="description" class="pro__single__content tab-pane fade in active">
+                            <div class="pro__tab__content__inner">
+                                <p><?php echo $get_product['0']['description'] ?></p>
+                            </div>
+                        </div>
+                        <!-- End Single Content -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Product Description -->
  <?php require('footer.php')?>       
