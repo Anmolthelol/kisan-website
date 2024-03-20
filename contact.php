@@ -96,7 +96,7 @@
         </section>
         <!-- End Contact Area -->
 		
-		 <!-- Google Map js -->
+    <!-- Google Map js -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo "></script>
     <script src="js/contact-map.js"></script>
     <script>
@@ -304,4 +304,6 @@
             });
         }
     </script>
+
+
  <?php require('footer.php')?>       

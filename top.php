@@ -12,7 +12,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Kisansuvidha - eCommerce HTML5 Templatee</title>
+    <title>Kisansuvidha Website</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -67,6 +67,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
 										 <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </nav>
+								
 
                                 <div class="mobile-menu clearfix visible-xs visible-sm">
                                     <nav id="mobile_dropdown">
@@ -90,7 +91,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                 <div class="header__right">
                                     
                                     <div class="header__account">
-                                        <a href="login.php">login/register</a>
+                                        <a href="login_user.php">login/register</a>
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
