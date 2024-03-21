@@ -192,4 +192,4 @@
             </div>
         </section>
         <!-- End Product Area -->
- <?php require('footer.php')?>       
+ <?php require('footer.php')?> 
