@@ -73,7 +73,7 @@
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
                             <h2 class="title__line">Best Seller</h2>
-                            <p>But I must explain to you how all this mistaken idea</p>
+                            <p>But I must explain to you how all this mistaken idea can be solve</p>
                         </div>
                     </div>
                 </div>
