@@ -87,7 +87,12 @@ while($row=mysqli_fetch_assoc($cat_res)){
                                 <div class="header__right">
                                     
                                     <div class="header__account">
-                                        <a href="login_user.php">login/register</a>
+                                        <?php if(isset($_SESSION['USER_LOGIN'])) {
+                                            echo '<a href="logout.php">Logout</a>';
+                                        }else{
+                                            echo '<a href="login_user.php">login/register</a>';
+                                        }
+                                     ?>
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
