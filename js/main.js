@@ -40,7 +40,7 @@
 -----------------------------------*/
 
 
-(function ($) {
+(function($) {
     'use strict';
 
 
@@ -65,10 +65,10 @@
         03. Product  Masonry (width)
     --------------------------------------------- */
 
-    $('.htc__product__container').imagesLoaded(function () {
+    $('.htc__product__container').imagesLoaded(function() {
 
         // filter items on button click
-        $('.product__menu').on('click', 'button', function () {
+        $('.product__menu').on('click', 'button', function() {
             var filterValue = $(this).attr('data-filter');
             $grid.isotope({ filter: filterValue });
         });
@@ -85,7 +85,7 @@
 
     });
 
-    $('.product__menu button').on('click', function (event) {
+    $('.product__menu button').on('click', function(event) {
         $(this).siblings('.is-checked').removeClass('is-checked');
         $(this).addClass('is-checked');
         event.preventDefault();
@@ -98,7 +98,7 @@
     --------------------------------------------- */
     var win = $(window);
     var sticky_id = $("#sticky-header-with-topbar");
-    win.on('scroll', function () {
+    win.on('scroll', function() {
         var scroll = win.scrollTop();
         if (scroll < 245) {
             sticky_id.removeClass("scroll-header");
@@ -122,12 +122,12 @@
         06. Search Bar
     --------------------------------------*/
 
-    $('.search__open').on('click', function () {
+    $('.search__open').on('click', function() {
         $('body').toggleClass('search__box__show__hide');
         return false;
     });
 
-    $('.search__close__btn .search__close__btn_icon').on('click', function () {
+    $('.search__close__btn .search__close__btn_icon').on('click', function() {
         $('body').toggleClass('search__box__show__hide');
         return false;
     });
@@ -137,14 +137,14 @@
         07. Shopping Cart Area
     --------------------------------------*/
 
-    $('.cart__menu').on('click', function (e) {
+    $('.cart__menu').on('click', function(e) {
         e.preventDefault();
         $('.shopping__cart').addClass('shopping__cart__on');
         $('.body__overlay').addClass('is-visible');
 
     });
 
-    $('.offsetmenu__close__btn').on('click', function (e) {
+    $('.offsetmenu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.shopping__cart').removeClass('shopping__cart__on');
         $('.body__overlay').removeClass('is-visible');
@@ -155,14 +155,14 @@
         08. Filter Area
     --------------------------------------*/
 
-    $('.filter__menu').on('click', function (e) {
+    $('.filter__menu').on('click', function(e) {
         e.preventDefault();
         $('.filter__wrap').addClass('filter__menu__on');
         $('.body__overlay').addClass('is-visible');
 
     });
 
-    $('.filter__menu__close__btn').on('click', function (e) {
+    $('.filter__menu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.filter__wrap').removeClass('filter__menu__on');
         $('.body__overlay').removeClass('is-visible');
@@ -173,14 +173,14 @@
         09. Toogle Menu
     --------------------------------------*/
 
-    $('.toggle__menu').on('click', function (e) {
+    $('.toggle__menu').on('click', function(e) {
         e.preventDefault();
         $('.offsetmenu').addClass('offsetmenu__on');
         $('.body__overlay').addClass('is-visible');
 
     });
 
-    $('.offsetmenu__close__btn').on('click', function (e) {
+    $('.offsetmenu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.offsetmenu').removeClass('offsetmenu__on');
         $('.body__overlay').removeClass('is-visible');
@@ -191,14 +191,14 @@
         10. User Menu
     --------------------------------------*/
 
-    $('.user__menu').on('click', function (e) {
+    $('.user__menu').on('click', function(e) {
         e.preventDefault();
         $('.user__meta').addClass('user__meta__on');
         $('.body__overlay').addClass('is-visible');
 
     });
 
-    $('.offsetmenu__close__btn').on('click', function (e) {
+    $('.offsetmenu__close__btn').on('click', function(e) {
         e.preventDefault();
         $('.user__meta').removeClass('user__meta__on');
         $('.body__overlay').removeClass('is-visible');
@@ -210,7 +210,7 @@
         11. Menu 
     --------------------------------------*/
 
-    $('.menu__click').on('click', function (e) {
+    $('.menu__click').on('click', function(e) {
         e.preventDefault();
         $('.off__canvars__wrap').addClass('off__canvars__wrap__on');
         $('.body__overlay').addClass('is-visible');
@@ -218,7 +218,7 @@
         $(this).hide();
     });
 
-    $('.menu__close__btn').on('click', function () {
+    $('.menu__close__btn').on('click', function() {
         $('.off__canvars__wrap').removeClass('off__canvars__wrap__on');
         $('.body__overlay').removeClass('is-visible');
         $('body').removeClass('off__canvars__open');
@@ -233,7 +233,7 @@
 
         $('.off__canvars__dropdown-menu').hide();
 
-        $('.off__canvars__dropdown > a').on('click', function (e) {
+        $('.off__canvars__dropdown > a').on('click', function(e) {
             e.preventDefault();
 
             $(this).find('i.zmdi').toggleClass('zmdi-chevron-up');
@@ -248,7 +248,7 @@
         13. Overlay Close
     --------------------------------------*/
 
-    $('.body__overlay').on('click', function () {
+    $('.body__overlay').on('click', function() {
         $(this).removeClass('is-visible');
         $('.offsetmenu').removeClass('offsetmenu__on');
         $('.shopping__cart').removeClass('shopping__cart__on');
@@ -272,8 +272,7 @@
         centerMode: true,
         focusOnSelect: true,
         centerPadding: '10px',
-        responsive: [
-            {
+        responsive: [{
                 breakpoint: 600,
                 settings: {
                     dots: false,
@@ -334,7 +333,7 @@
         min: 10,
         max: 500,
         values: [110, 400],
-        slide: function (event, ui) {
+        slide: function(event, ui) {
             $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
         }
     });
@@ -355,7 +354,7 @@
         $('.accordion__body')
             .siblings('.accordion__body').slideUp()
             .first().slideDown();
-        $('.accordion').on('click', '.accordion__title', function () {
+        $('.accordion').on('click', '.accordion__title', function() {
             $(this).addClass('active').siblings('.accordion__title').removeClass('active');
             $(this).next('.accordion__body').slideDown().siblings('.accordion__body').slideUp();
         });
@@ -370,7 +369,7 @@
     function shipToAnother() {
         var trigger = $('.ship-to-another-trigger'),
             container = $('.ship-to-another-content');
-        trigger.on('click', function (e) {
+        trigger.on('click', function(e) {
             e.preventDefault();
             container.slideToggle();
         });
@@ -386,7 +385,7 @@
     function paymentCreditCard() {
         var trigger = $('.paymentinfo-credit-trigger'),
             container = $('.paymentinfo-credit-content');
-        trigger.on('click', function (e) {
+        trigger.on('click', function(e) {
             e.preventDefault();
             container.slideToggle();
         });
@@ -453,7 +452,7 @@ function send_message() {
             url: 'send_message.php',
             type: 'post',
             data: 'name=' + name + '&email=' + email + '&mobile=' + mobile + '&message=' + message,
-            success: function (result) {
+            success: function(result) {
                 alert(result);
             }
         });
@@ -474,10 +473,12 @@ function user_register() {
     if (name == "") {
         jQuery('#name_error').html('please enter name');
         is_error = 'yes';
-    } if (email == "") {
+    }
+    if (email == "") {
         jQuery('#email_error').html('please enter email');
         is_error = 'yes';
-    } if (mobile == "") {
+    }
+    if (mobile == "") {
         jQuery('#mobile_error').html('please enter mobile');
         is_error = 'yes';
     }
@@ -486,16 +487,16 @@ function user_register() {
         is_error = 'yes';
     }
 
-    if (is_error=='') {
+    if (is_error == '') {
         jQuery.ajax({
             url: 'register_submit.php',
             type: 'post',
-            data: 'name=' + name + '&email=' + email + '&mobile=' + mobile  + '&password=' + password,
-            success: function (result) {
-                if(result=='email_present'){
+            data: 'name=' + name + '&email=' + email + '&mobile=' + mobile + '&password=' + password,
+            success: function(result) {
+                if (result == 'email_present') {
                     jQuery('#email_error').html('Email id already present');
                 }
-                if(result=='insert'){
+                if (result == 'insert') {
                     jQuery('.register_msg').html('Thank you for registration');
                 }
             }
@@ -505,6 +506,7 @@ function user_register() {
 
 
 }
+
 function user_login() {
 
     jQuery('.field_error').html('');
@@ -515,30 +517,39 @@ function user_login() {
         jQuery('#login_email_error').html('please enter email');
         is_error = 'yes';
     }
-   
+
     if (password == "") {
         jQuery('#login_password_error').html('please enter password');
         is_error = 'yes';
     }
 
-    if (is_error=='') {
+    if (is_error == '') {
         jQuery.ajax({
             url: 'login_submit.php',
             type: 'post',
-            data: 'email=' + email  + '&password=' + password,
-            success: function (result) {
-                if(result=='wrong'){
+            data: 'email=' + email + '&password=' + password,
+            success: function(result) {
+                if (result == 'wrong') {
                     jQuery('.login_msg').html('please  enter vallid login details');
                 }
-                if(result=='valid'){
-                   window.location.href='index.php';
+                if (result == 'valid') {
+                    window.location.href = 'index.php';
                 }
             }
         });
     }
 
 
-
 }
 
-
+function manage_cart(pid, type) {
+    var qty = jQuery("qty").val();
+    jQuery.ajax({
+        url: 'manage_cart.php',
+        type: 'post',
+        data: 'pid=' + pid + '&qty=' + qty + '&type=' + type,
+        success: function(result) {
+            jQuery('.htc_qua').html(result);
+        }
+    });
+}

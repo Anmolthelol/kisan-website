@@ -59,6 +59,22 @@
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
                                     </div>
+                                    <div class="sin__desc">
+                                        <p><span>Qty:</span>
+                                    <select id="qty">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                        <option>10</option>
+                                    </select>
+                                    </p>
+                                    </div>
                                     <div class="sin__desc align--left">
                                         <p><span>Categories:</span></p>
                                         <ul class="pro__cat__list">
@@ -66,7 +82,7 @@
                                         </ul>
                                         
                                     </div>
-                                    <button> <a class="fv-btn" href="#">Add  to cart</a></button>
+                                    <button> <a class="fr-btn" href="javascript:void(0)" onclick="manage_cart('<?php echo $get_product['0'] ['id']?>','add')">Add  to cart</a></button>
                                     </div>
                                 </div>
                             </div>
