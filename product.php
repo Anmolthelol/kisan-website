@@ -50,11 +50,11 @@
                         <div class="col-md-7 col-lg-7 col-sm-12 col-xs-12 smt-40 xmt-40">
                             <div class="ht__product__dtl">
                                 <h2><?php echo $get_product['0']['product_name'] ?></h2>
-                                <ul  class="pro__prize">
-                                    <li class="old__prize"><?php echo $get_product['0']['mrp'] ?></li>
-                                    <li><?php echo $get_product['0']['price'] ?></li>
-                                </ul>
-                                <p class="pro__info"><?php echo $get_product['0']['short_description'] ?></p>
+                                
+                                   
+                                <p class="pro__info">MRP :<?php echo $get_product['0']['mrp'] ?></p>
+                                <p class="pro__info">PRICE :<?php echo $get_product['0']['price'] ?></p>
+                                <p class="pro__info">SHORT_DESC :<?php echo $get_product['0']['short_description'] ?></p>
                                 <div class="ht__pro__desc">
                                     <div class="sin__desc">
                                         <p><span>Availability:</span> In Stock</p>
@@ -64,8 +64,9 @@
                                         <ul class="pro__cat__list">
                                             <li><a href="#"><?php echo $get_product['0'] ['categories'] ?></a></li>
                                         </ul>
+                                        
                                     </div>
-                                    
+                                    <button> <a class="fv-btn" href="#">Add  to cart</a></button>
                                     </div>
                                 </div>
                             </div>

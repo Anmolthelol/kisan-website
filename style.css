@@ -2832,8 +2832,8 @@ a.shipping-calculator-button:hover{
     margin-top: 32px;
 }
 .fv-btn {
-    background: #c43b68 none repeat scroll 0 0;
-    border: 1px solid #c43b68;
+    background:green none repeat scroll 0 0;
+    border: 1px solid green;
     color: #fff;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
@@ -2842,11 +2842,12 @@ a.shipping-calculator-button:hover{
     padding: 0 30px;
     text-transform: uppercase;
     transition: all 0.4s ease 0s;
+    margin-top: 20px;
 }
 .fv-btn:hover {
     background: transparent none repeat scroll 0 0;
-    border: 1px solid #c43b68;
-    color: #c43b68;
+    border: 1px solid green;
+    color: green;
 }
 .fv-btn i {
     padding-right: 9px;
@@ -2912,7 +2913,7 @@ a.shipping-calculator-button:hover{
     width: 260px;
 }
 .wishlist-table table .product-add-to-cart > a:hover{
-    background: #c43b68;
+    background: green;
     color: #fff;
 }
 .wishlist-table table .product-add-to-cart {
@@ -2957,7 +2958,7 @@ a.shipping-calculator-button:hover{
   width: 35px;
   height: 35px;
   border-radius: 100%;
-  border: 5px solid #c43b68;
+  border: 5px solid green;
   background-color: #fff;
   position: relative;
   display: inline-block;
@@ -2972,7 +2973,7 @@ a.shipping-calculator-button:hover{
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
   font-family: FontAwesome;
-  color: #c43b68;
+  color: green;
   font-size: 18px;
   width: 100%;
   height: 100%;
@@ -3308,7 +3309,7 @@ ul.htc__instagram__posts.owl-carousel li img {
 .accordion__body .checkout-method__login .single-input input:focus,
 .accordion__body .checkout-method__login .single-input input:active{
     background: transparent;
-    border: 1px solid #c43b68;
+    border: 1px solid green;
 }
 .accordion__body .checkout-method__login .dark-btn{
     margin-top: 20px;
@@ -3349,7 +3350,7 @@ ul.htc__instagram__posts.owl-carousel li img {
 .paymentinfo-credit-content .single-input select:active,
 .shipinfo .single-input select:active{
     outline: none;
-    border: 1px solid #c43b68;
+    border: 1px solid green;
 }
 /*Shipinfo*/
 .shipinfo__title{
