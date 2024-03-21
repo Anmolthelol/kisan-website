@@ -55,7 +55,7 @@
     margin-bottom: 11px;
 }
 .ft__address:hover .ft__title h4::before {
-    background: #c43b68 none repeat scroll 0 0;
+    background: green none repeat scroll 0 0;
     width: 40px;
 }
 .ft__details p {
@@ -64,7 +64,7 @@
 }
 
 .footer__top h2.ft__top__title {
-    color: #c43b68;
+    color: green;
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 30px;
@@ -124,8 +124,8 @@
     padding-right: 8px;
 }
 .ft__btn a:hover {
-    background: #c43b68 none repeat scroll 0 0;
-    border: 1px solid #c43b68;
+    background: green none repeat scroll 0 0;
+    border: 1px solid green;
     color: #fff;
 }
 
@@ -162,7 +162,7 @@
       transition: 0.3s;
 }
 .footer__btn a:hover{
-    color: #c43b68;
+    color: green;
 }
 .footer__btn {
     margin-top: 22px;
@@ -176,7 +176,7 @@
     padding-top: 9px;
 }
 .ft__list li a:hover {
-    color: #c43b68;
+    color: green;
     padding-left: 3px;
 }
 .ft__social__link span {
@@ -210,7 +210,7 @@
     margin-left: 4px;
 }
 .social__link li a:hover i {
-    background: #c43b68 none repeat scroll 0 0;
+    background: green none repeat scroll 0 0;
     color: #fff;
 }
 .lan__select > li {
@@ -249,7 +249,7 @@
     line-height: 26px;
 }
 .lan__select li:hover > a {
-    color: #c43b68;
+    color: green;
 }
 .lan__select > li::before {
     color: #ffffff;
@@ -313,7 +313,7 @@
     text-transform: capitalize;
 }
 .copyright__inner p a {
-    color: #c43b68;
+    color: green;
 }
 
 
