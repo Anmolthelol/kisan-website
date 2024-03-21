@@ -2,32 +2,21 @@
  <div class="body__overlay"></div>
        
         <!-- Start Slider Area -->
-        <div class="slider__container slider--one bg__cat--3">
-            <div class="slide__container slider__activation__wrap owl-carousel">
-                <!-- Start Single Slide -->
-                <div class="single__slide animation__style01 slider__fixed--height">
-                    <div class="container">
-                    <div class="row">
-                        <div class="col-xs-12">
-                                <div class="slide__thumb">
-                                    <video class="d-block w-200" src="images/mp4/slide1.mp4" autoplay loop muted type="mp4" alt="slider images"></video> 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Single Slide -->
-                
-            </div>
-        </div>
+       
         <!-- Start Slider Area -->
         <!-- Start Category Area -->
+        <div class="col-lg-12">
+            <video autoplay muted loop width="100%">
+                <source src="images/mp4/slide1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
         <section class="htc__category__area ptb--100">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="section__title--2 text-center">
-                            <h2 class="title__line">New Arrivals</h2>
+                            <h2 class="title__line" style="padding-top: 50px;">New Arrivals</h2>
                             <p>But I must explain to you how all this mistaken idea</p>
                         </div>
                     </div>

@@ -452,7 +452,7 @@ function send_message(){
 		jQuery.ajax({
 			url:'send_message.php',
 			type:'post',
-			data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message+,
+			data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message,
 			success:function(result){
 				alert(result);
 			}

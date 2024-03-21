@@ -41,11 +41,7 @@ while($row=mysqli_fetch_assoc($cat_res)){
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5"> 
                                 <div class="logo">
                                      <a href="index.html"><img src="images/logo/kisanlogo.png" 
-									 alt="Logo">
-									 <h3>Kisansuvidha
-											
-									</h3> 
-									
+									 alt="Logo">			
 									 </a>
 									       
                                 </div>
