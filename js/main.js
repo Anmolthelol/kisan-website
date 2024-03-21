@@ -452,7 +452,7 @@ function send_message(){
 		jQuery.ajax({
 			url:'send_message.php',
 			type:'post',
-			data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message+,
+			data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message,
 			success:function(result){
 				alert(result);
 			}
@@ -461,5 +461,36 @@ function send_message(){
 	
 }
 
+
+function user_register(){
+
+    var name=jQuery("#name").val();
+	var email=jQuery("#email").val();
+	var mobile=jQuery("#mobile").val();
+	var password=jQuery("#password").val();
+	
+	
+	if(name==""){
+		alert('please enter name');
+	}else if(email==""){
+		alert('please enter email');
+	}else if(mobile==""){
+		alert('please enter mobile');
+	}else if(message==""){
+		alert('please enter message');
+    }else if(password==""){
+		alert('please enter password');
+	}else {
+		jQuery.ajax({
+			url:'send_message.php',
+			type:'post',
+			data:'name='+name+'&email='+email+'&mobile='+mobile+'&message='+message+'&password='+password,
+			success:function(result){
+				alert(result);
+			}
+		});
+	}
+
+}
 
 
