@@ -192,12 +192,12 @@ a {
 a:hover,
 a:focus,
 a:active {
-    color: #c43b68;
+    color: green;
 }
 p a:hover,
 p a:focus,
 p a:active {
-    color: #c43b68;
+    color: green;
 }
 h1 a,
 h2 a,
@@ -240,14 +240,14 @@ body {
   background: #fff;
 }
 .mark, mark {
-    background: #c43b68 none repeat scroll 0 0;
+    background: green none repeat scroll 0 0;
     color: #ffffff;
 }
 /*-------------------------------
   06. Bg-Color
 -------------------------------------*/
 .bg__theme {
-    background: #c43b68;
+    background: green;
 }
 .bg__white {
   background: #fff;
@@ -324,10 +324,10 @@ body {
   09. Text Color
 --------------------------------*/
 .text--theme { 
-  color: #c43b68;
+  color: green;
  }
 .text--blue { 
-  color: #c43b68;
+  color: green;
  }
 .text--white { 
   color: #fff ;
@@ -483,20 +483,20 @@ select {
 }
 input:focus {
     background: transparent;
-    border: 1px solid #c43b68;
+    border: 1px solid green;
     outline: none;
 }
 textarea {
     resize: none;
-    background: #c43b68;
-    border: 1px solid #c43b68;
+    background: green;
+    border: 1px solid green;
     padding: 10px;
     width: 100%;
     font-size: 14px;
 }
 textarea:focus {
     background: transparent;
-    border: 1px solid #c43b68;
+    border: 1px solid green;
     outline: none;
 }
 /*----------------------------
@@ -573,7 +573,7 @@ textarea:focus {
 .pt--100 { padding-top: 100px }
 .pt--110 { padding-top: 110px }
 .pt--120 { padding-top: 120px }
-.pt--130 { padding-top: 130px }-
+.pt--130 { padding-top: 130px }
 .pt--140 { padding-top: 140px }
 .pt--150 { padding-top: 150px }
 
@@ -695,17 +695,17 @@ p.error {
 ------------------------------------------*/
 
 *::-moz-selection {
-    background: #c43b68;
+    background: green;
     color: #fff;
     text-shadow: none;
 }
 ::-moz-selection {
-    background: #c43b68;
+    background: green;
     color: #fff;
     text-shadow: none;
 }
 ::selection {
-    background: #c43b68;
+    background: green;
     color: #fff;
     text-shadow: none;
 }
