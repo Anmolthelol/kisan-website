@@ -315,7 +315,7 @@ body {
   background: #cb2027;
 }
 .bg--dribbble {
-  background: #ea4c89;
+  background: green;
 }
 .bg--behance {
   background: #053eff;
@@ -324,7 +324,7 @@ body {
   09. Text Color
 --------------------------------*/
 .text--theme { 
-  color: green;
+  color: rgb(24, 94, 24);
  }
 .text--blue { 
   color: green;
