@@ -31,7 +31,7 @@
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <form id="login-form" action="#" method="post">
+                        <form id="login-form" method="post">
                             <div class="single-contact-form">
                                 <div class="contact-box name">
                                     <input type="text" name="login_email" id="login_email" placeholder="Your Email*" style="width:100%">
@@ -66,14 +66,14 @@
                         </div>
                     </div>
                     <div class="col-xs-12">
-                        <form id="register-form"  method="post">
+                        <form id="register-form" method="post">
                             <div class="single-contact-form">
                                 <div class="contact-box name">
                                     <input type="text" name="name" id="name" placeholder="Your Name*" style="width:100%">
                                 </div>
                                 <span class="field_error" id="name_error"></span>
                             </div>
-                         
+
                             <div class="single-contact-form">
                                 <div class="contact-box name">
                                     <input type="text" name="email" id="email" placeholder="Your Email*" style="width:100%">
@@ -88,8 +88,7 @@
                             </div>
                             <div class="single-contact-form">
                                 <div class="contact-box name">
-                                    <input type="password" name="password" id="password" placeholder="Your Password*" 
-                                    style="width:100%">
+                                    <input type="password" name="password" id="password" placeholder="Your Password*" style="width:100%">
                                 </div>
                                 <span class="field_error" id="password_error"></span>
                             </div>

@@ -533,7 +533,7 @@ function user_login() {
                     jQuery('.login_msg').html('please  enter vallid login details');
                 }
                 if (result == 'valid') {
-                    window.location.href = 'index.php';
+                    window.location.href = window.location.href;
                 }
             }
         });
