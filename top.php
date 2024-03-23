@@ -86,7 +86,8 @@ $totalProduct=$obj->totalProduct();
                                 <div class="header__right">
                                     <div class="header__account">
                                         <?php if(isset($_SESSION['USER_LOGIN'])) {
-                                            echo '<a href="logout.php">Logout</a>';
+                                            echo '<a href="logout.php">Logout</a><a href="my_order.php">My 
+                                            Order</a>';
                                         }else{
                                             echo '<a href="login_user.php">login/register</a>';
                                         }
