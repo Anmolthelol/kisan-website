@@ -30,7 +30,7 @@ $res=mysqli_query($con,$sql);
                                        <th>ID</th>
                                        <th>Name</th>
 									   <th>Email</th>
-									 <!--  <th>Password</th>-->
+									  <th>Password</th>
 									   <th>Mobile</th>
                                        <th>Date</th>
 									    <th></th>
@@ -45,8 +45,7 @@ $res=mysqli_query($con,$sql);
 									    <td ><?php echo $row['uid']?></td>
 									    <td ><?php echo $row['name']?></td>
 										<td ><?php echo $row['email']?></td>
-										<!--<td ></td>-->
-										<?php // echo $row['password']?>
+										<td><?php  echo $row['password']?></td>
 										<td ><?php echo $row['mobile']?></td>
 										<td ><?php echo $row['added_on']?></td>
 									    <td >

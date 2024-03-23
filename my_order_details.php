@@ -1,6 +1,6 @@
 <?php
 require('top.php');
-$order_id=get_safe_value($con,$_GET['id']);
+$order_id = get_safe_value($con, $_GET['id']);
 ?>
 
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -21,65 +21,65 @@ $order_id=get_safe_value($con,$_GET['id']);
     </div>
 </div>
 <div class="wishlist-area ptb--100 bg__white">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="wishlist-content">
-                            <form action="#">
-                                <div class="wishlist-table table-responsive">
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th class="product-thumbnail">Product Name</th>
-                                                <th class="product-thumbnail">Product Image</th>
-                                                <th class="product-name">Qty</th>
-                                                <th class="product-name">Price</th>
-                                                <th class="product-name">Total Price</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $uid = $_SESSION['USER_ID'];
-                                            $res=mysqli_query($con,"select distinct(order_details.id),order_details.*,product.product_name,product.image from order_details,
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="wishlist-content">
+                    <form action="#">
+                        <div class="wishlist-table table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th class="product-thumbnail">Product Name</th>
+                                        <th class="product-thumbnail">Product Image</th>
+                                        <th class="product-name">Qty</th>
+                                        <th class="product-name">Price</th>
+                                        <th class="product-name">Total Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $uid = $_SESSION['USER_ID'];
+                                    $res = mysqli_query($con, "select distinct(order_details.id),order_details.*,product.product_name,product.image from order_details,
                                             product,orders where order_details.order_id='$order_id' and orders.uid='$uid' and order_details.product_id=product.id ");
-                                            $total_price=0;
-                                            while($row=mysqli_fetch_assoc($res)){
-                                                $total_price=$total_price+($row['qty']*$row['price']);  
-                                            ?>
-                                            <tr>
+                                    $total_price = 0;
+                                    while ($row = mysqli_fetch_assoc($res)) {
+                                        $total_price = $total_price + ($row['qty'] * $row['price']);
+                                    ?>
+                                        <tr>
 
-                                                <td class="product-name">
-                                                    <?php echo $row['product_name']?></td>
-                                                
-                                                <td class="product-name"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH.$row['image']?>">
-                                                </td>
-                                                <td class="product-name"><?php echo $row['qty']?>
-                                                </td>
-                                                <td class="product-name"><?php echo $row['price']?>
-                                                </td>
-                                                <td class="product-name"><?php echo $row['qty']*$row['price']?>
-                                                </td>
-                                                
-                                            </tr>
-                                           <?php } ?>
-                                           <tr>
-                                                <td colspan="3"></td>
-                                                <td class="product-name">TOTAL PRICE
-                                                </td>
-                                                <td class="product-name"><?php echo $total_price?>
-                                                </td>
-                                                
-                                            </tr>
-                                        </tbody>
-                                       
-                                    </table>
-                                </div>  
-                            </form>
+                                            <td class="product-name">
+                                                <?php echo $row['product_name'] ?></td>
+
+                                            <td class="product-name"><img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>">
+                                            </td>
+                                            <td class="product-name"><?php echo $row['qty'] ?>
+                                            </td>
+                                            <td class="product-name"><?php echo $row['price'] ?>
+                                            </td>
+                                            <td class="product-name"><?php echo $row['qty'] * $row['price'] ?>
+                                            </td>
+
+                                        </tr>
+                                    <?php } ?>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="product-name">TOTAL PRICE
+                                        </td>
+                                        <td class="product-name"><?php echo $total_price ?>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+
+                            </table>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
-        
+    </div>
+</div>
+
 <?php
 require('footer.php'); ?>
