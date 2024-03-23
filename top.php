@@ -2,13 +2,11 @@
 require('database.php');
 require('functions.inc.php');
 require('add_to_cart.php');
-
 $cat_res=mysqli_query($con,"select * from categories where 	status=1 order by categories asc");
 $cat_arr=array();
 while($row=mysqli_fetch_assoc($cat_res)){
 	$cat_arr[]=$row;
 }
-
 $obj=new add_to_cart();
 $totalProduct=$obj->totalProduct();
 ?>
@@ -48,8 +46,7 @@ $totalProduct=$obj->totalProduct();
                                      <a href="index.html"><img src="images/logo/kisanlogo.png" 
 									 alt="Logo">			
 									 </a>
-									       
-                                </div>
+								</div>
                             </div>
                             <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
@@ -62,15 +59,12 @@ $totalProduct=$obj->totalProduct();
 											$list['categories']?></a></li>
 											<?php
 										}
-										
 										?>
                                         <li><a href="scheme.php">Scheme</a></li>
 										 <li><a href="contact.php">Contact</a></li>
                                     </ul>
                                 </nav>
-								
-
-                                <div class="mobile-menu clearfix visible-xs visible-sm">
+								<div class="mobile-menu clearfix visible-xs visible-sm">
                                     <nav id="mobile_dropdown">
                                         <ul>
                                             <li><a href="index.php">Home</a></li>
@@ -90,10 +84,10 @@ $totalProduct=$obj->totalProduct();
                             </div>
                             <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
                                 <div class="header__right">
-                                    
                                     <div class="header__account">
                                         <?php if(isset($_SESSION['USER_LOGIN'])) {
-                                            echo '<a href="logout.php">Logout</a>';
+                                            echo '<a href="logout.php">Logout</a><a href="my_order.php">My 
+                                            Order</a>';
                                         }else{
                                             echo '<a href="login_user.php">login/register</a>';
                                         }
