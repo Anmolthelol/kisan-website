@@ -1,11 +1,12 @@
 <?php
+
 require('top.php');
 if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
 ?>
     <script>
         window.location.href = 'index.php';
     </script>
-<?php
+    <?php
 }
 
 
@@ -15,28 +16,47 @@ foreach ($_SESSION['cart'] as $key => $val) {
     $price = $productArr[0]['price'];
     $qty = $val['qty'];
     $cart_total = $cart_total + ($price * $qty);
-
 }
 
 
 
-if(isset($_POST['submit'])){
-    $address=get_safe_value($con,$_POST['address']);
-    $city=get_safe_value($con,$_POST['city']);
-    $pincode=get_safe_value($con,$_POST['pincode']);
-    $payment_type=get_safe_value($con,$_POST['payment_type']);
-    $uid=$_SESSION['USER_ID'];
-    $total_price=$cart_total;
-    $payment_status='pending';
-    if($payment_type=='cod'){
-        $payment_status='success';
+if (isset($_POST['submit'])) {
+    $address = get_safe_value($con, $_POST['address']);
+    $city = get_safe_value($con, $_POST['city']);
+    $pincode = get_safe_value($con, $_POST['pincode']);
+    $payment_type = get_safe_value($con, $_POST['payment_type']);
+    $uid = $_SESSION['USER_ID'];
+    $total_price = $cart_total;
+    $payment_status = 'pending';
+    if ($payment_type == 'cod') {
+        $payment_status = 'success';
     }
-    $order_status='pending';
-    $added_on=date('y-m-d h:i:s');
+    $order_status = '1';
+    $added_on = date('y-m-d h:i:s');
 
-    mysqli_query($con,"insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on)
-     values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on')");
+    mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on)
+    values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on')");
 
+    $order_id = mysqli_insert_id($con);
+
+    foreach ($_SESSION['cart'] as $key => $val) {
+        $productArr = get_product($con, '', '', $key);
+        $price = $productArr[0]['price'];
+        $qty = $val['qty'];
+
+
+        mysqli_query($con, "insert into order_details(order_id,product_id,qty,price)
+        values('$order_id','$key','$qty','$price')");
+    }
+    unset($_SESSION['cart']) 
+    ?>
+    <script>
+        window.location.href = 'thank_you.php';
+    </script>
+    <?php
+
+
+  
 }
 
 ?>
@@ -71,32 +91,32 @@ if(isset($_POST['submit'])){
                                 Checkout Method
                             </div>
 
-                          
+
                             <div class="accordion__title">
                                 Address Information
                             </div>
                             <form method="post">
                                 <div class="accordion__body">
                                     <div class="bilinfo">
-                                        
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="single-input">
-                                                        <input type="text" name="address" placeholder="Street Address" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="single-input">
-                                                        <input type="text" name="city" placeholder="City/State" required>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="single-input">
-                                                        <input type="text" name="pincode" placeholder="Post code/ zip" required>
-                                                    </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="single-input">
+                                                    <input type="text" name="address" placeholder="Street Address" required>
                                                 </div>
                                             </div>
-                                        
+                                            <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <input type="text" name="city" placeholder="City/State" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="single-input">
+                                                    <input type="text" name="pincode" placeholder="Post code/ zip" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="accordion__title">
@@ -109,7 +129,7 @@ if(isset($_POST['submit'])){
                                             &nbsp;&nbsp;PayU<input type="radio" name="payment_type" value="payu" required />
                                         </div>
                                         <div class="single-method">
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -126,7 +146,7 @@ if(isset($_POST['submit'])){
                         <?php
                         $cart_total = 0;
                         foreach ($_SESSION['cart'] as $key => $val) {
-                           $productArr = get_product($con, '', '', $key);
+                            $productArr = get_product($con, '', '', $key);
                             $pname = $productArr[0]['product_name'];
                             $mrp = $productArr[0]['mrp'];
                             $price = $productArr[0]['price'];
