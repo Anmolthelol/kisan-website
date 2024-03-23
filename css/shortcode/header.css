@@ -36,7 +36,7 @@
     margin: 0 20px;
 }
 .main__menu > li:hover > a{
-  color: #c43b68;
+  color: green;
 }
 .logo a{
   display: block;
