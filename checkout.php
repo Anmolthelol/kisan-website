@@ -34,8 +34,10 @@ if (isset($_POST['submit'])) {
     $order_status = '1';
     $added_on = date('y-m-d h:i:s');
 
-    mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on)
-    values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on')");
+    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+
+    mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid)
+    values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid')");
 
     $order_id = mysqli_insert_id($con);
 
@@ -67,7 +69,7 @@ if (isset($_POST['submit'])) {
     $userArr=mysqli_fetch_assoc(mysqli_query($con,"select * from users where uid='$uid'"));
 
     $formError = 0;
-    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+    
     $posted['txnid']=$txnid;
     $posted['amount']=$total_price;
     $posted['firstname']=$userArr['name'];

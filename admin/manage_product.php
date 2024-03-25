@@ -11,6 +11,8 @@ $description="";
 $meta_title="";
 $meta_description="";
 $meta_keyword="";
+$best_seller="";
+
 $msg='';
 
 $image_required='required';
@@ -32,6 +34,7 @@ if(isset($_GET['id']) && $_GET['id']!=''){
 		$meta_title=$row['meta_title'];
 		$meta_description=$row['meta_description'];
 		$meta_keyword=$row['meta_keyword'];
+		$best_seller=$row['best_seller'];
 		
 	}else{
 		header('location:product.php');
@@ -57,6 +60,7 @@ if(isset($_POST['submit'])){
 	$meta_title=get_safe_value($con,$_POST['meta_title']);
 	$meta_description=get_safe_value($con,$_POST['meta_description']);
 	$meta_keyword=get_safe_value($con,$_POST['meta_keyword']);
+	$best_seller=get_safe_value($con,$_POST['best_seller']);
 	
 	$res=mysqli_query($con,"select * from product where  product_name ='$product_name'");
 	$check=mysqli_num_rows($res);
@@ -84,11 +88,11 @@ if(isset($_POST['submit'])){
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name']; 
 				move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
 				$update_sql="update product set category_id='$category_id',product_name='$product_name',mrp='$mrp',
-                price='$price',qty='$qty',short_description='$short_description',description='$description',meta_title='$meta_title',   
+                price='$price',qty='$qty',short_description='$short_description',description='$description',best_seller='$best_seller',meta_title='$meta_title',   
                 meta_description='$meta_description',meta_keyword='$meta_keyword',image='$image' where id='$id'";
 			}else{
 				$update_sql="update product set category_id='$category_id',product_name='$product_name',mrp='$mrp',
-                price='$price',qty='$qty',short_description='$short_description',description='$description',meta_title='$meta_title',   
+                price='$price',qty='$qty',short_description='$short_description',description='$description',best_seller='$best_seller',meta_title='$meta_title',   
                 meta_description='$meta_description',meta_keyword='$meta_keyword' where id='$id'";
 			}
 		  mysqli_query($con,$update_sql);
@@ -96,8 +100,8 @@ if(isset($_POST['submit'])){
 		  $image=rand(111111111,999999999).'_'.$_FILES['image']['name']; 
 		  move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
 		  mysqli_query($con,"insert into 
-		  product(category_id,product_name,mrp,price,qty,short_description,description,meta_title,meta_description,meta_keyword,status,image) 
-		  values('$category_id','$product_name','$mrp','$price','$qty','$short_description','$description','$meta_title','$meta_description','$meta_keyword',1,'$image')");
+		  product(category_id,product_name,mrp,price,qty,short_description,description,meta_title,meta_description,,best_seller,meta_keyword,status,image) 
+		  values('$category_id','$product_name','$mrp','$price','$qty','$short_description','$description','$meta_title','$meta_description','$best_seller','$meta_keyword',1,'$image')");
 	   }
 	
 	   header('location:product.php');
@@ -114,7 +118,7 @@ if(isset($_POST['submit'])){
                         <div class="card-header"><strong>Product</strong><small> Form</small></div>
 						<Form method="post" enctype="multipart/form-data">
 						    <div class="card-body card-block">
-                                <div class="form-group">
+								<div class="form-group">
 							       <label for="categories" class=" form-control-label">Categories
 								   </label>
 							       <select class="form-control" name="category_id">
@@ -132,12 +136,32 @@ if(isset($_POST['submit'])){
 										?>
 									</select>
 						        </div>
+                               
 								<div class="form-group">
 							       <label for="categories" class=" form-control-label">Product Name
 								   </label>
 							       <input type="text" name="product_name" placeholder="Enter product name" 
 								   class="form-control" required value="<?php echo $product_name?>">
 						        </div>
+								<div class="form-group">
+							       <label for="categories" class=" form-control-label">Best Seller
+								   </label>
+							       <select class="form-control" name="best_seller" required>
+										<option value=''>Select</option>
+										if($best_seller==1){
+											echo '<option value="1" selected>Yes</option>
+												<option value="0">No</option>';
+										}elseif($best_seller==0){
+											echo '<option value="1">Yes</option>
+												<option value="0" selected>No</option>';
+										}else{
+											echo '<option value="1" >Yes</option>
+												<option value="0" >No</option>';
+										}
+										
+									</select>
+						        </div>
+								
 								<div class="form-group">
 							       <label for="categories" class=" form-control-label">MRP
 								   </label>

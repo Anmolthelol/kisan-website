@@ -1,9 +1,6 @@
 <?php
 //echo '<b>Transaction In Process, Please do not reload</b>';
 
-echo '<pre>';
-print_r($_POST);
-
 $payment_mode=$_POST['mode'];
 $pay_id=$_POST['mihpayid'];
 $status=$_POST["status"];
@@ -23,7 +20,7 @@ $reverseKeyArray = array_reverse($keyArray);
 $reverseKeyString =	implode("|",$reverseKeyArray);
 $saltString     = $SALT.'|'.$status.'|'.$reverseKeyString;
 $sentHashString = strtolower(hash('sha512', $saltString));
-
+	
 
 if($sentHashString != $posted_hash){
 	mysqli_query($con,"update order set payment_status='$status', mihpayid='$mihpayid' where txnid='$txnid'");	

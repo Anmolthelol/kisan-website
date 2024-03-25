@@ -1,7 +1,8 @@
 <?php
+require('database.php');
+require('functions.inc.php');
 //echo '<b>Transaction In Process, Please do not reload</b>';
-echo '<pre>';
-print_r($_POST);
+
 $payment_mode=$_POST['mode'];
 $pay_id=$_POST['mihpayid'];
 $status=$_POST["status"];
@@ -24,9 +25,18 @@ $sentHashString = strtolower(hash('sha512', $saltString));
 
 
 if($sentHashString != $posted_hash){
-	mysqli_query($con,"update order set payment_status='$status', mihpayid='$mihpayid' where txnid='$txnid'");	
+	mysqli_query($con,"update orders set payment_status='$status', mihpayid='$pay_id' where txnid='$txnid'");
+	?>
+	<script>
+        window.location.href = 'payment_fail.php';
+    </script>
+	<?php	
 }else{
-	mysqli_query($con,"update order set payment_status='$status', mihpayid='$mihpayid' where txnid='$txnid'");	
-	
+	mysqli_query($con,"update orders set payment_status='$status', mihpayid='$pay_id' where txnid='$txnid'");	
+	?>
+	<script>
+        window.location.href = 'thank_you.php';
+    </script>
+	<?php
 }
 ?>
