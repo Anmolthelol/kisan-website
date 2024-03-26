@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     $order_status = '1';
     $added_on = date('y-m-d h:i:s');
 
-    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+    //$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid)
     values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid')");
@@ -52,7 +52,7 @@ if (isset($_POST['submit'])) {
     }
     unset($_SESSION['cart']);
 
-    if($payment_type == 'payu'){
+    if($payment_type == 'rezor'){
     $MERCHANT_KEY = "gtKFFx"; 
     $SALT = "eCwWELxi";
     $hash_string = '';
@@ -199,8 +199,8 @@ if (isset($_POST['submit'])) {
                                 <div class="accordion__body">
                                     <div class="paymentinfo">
                                         <div class="single-method">
-                                            COD<input type="radio" name="payment_type" value="COD" required />
-                                            &nbsp;&nbsp;PayU<input type="radio" name="payment_type" value="payu" required />
+                                           <!-- COD<input type="radio" name="payment_type" value="COD" required />-->
+                                            &nbsp;&nbsp;Rezorpay<input type="radio" name="payment_type" value="rezor" required />
                                         </div>
                                         <div class="single-method">
 

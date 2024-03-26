@@ -7,7 +7,7 @@
     $price_low_selected="";
     $new_selected="";
     $old_selected="";
-    $sort='';
+   
 
     if(isset($_GET['sort'])){
         $sort = mysqli_real_escape_string($con, $_GET['sort']);
@@ -23,8 +23,8 @@
             $sort_order="order by product.id desc";
             $new_selected="selected";
         }
+        //
         if($sort=="old"){
-            //echo $sort;
             $sort_order="order by product.id asc";
             $old_selected="selected";
         }
@@ -45,7 +45,7 @@
  <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
      <div class="ht__bradcaump__wrap">
          <header>
-             <img src="images/bg/kisanbg.jpg">
+            <img src="images/bg/kisanbg.jpg">
          </header>
          <div class="container">
              <div class="row">
@@ -69,11 +69,11 @@
                          <div class="htc__grid__top">
                              <div class="htc__select__option">
                                  <select class="ht__select" onchange="sort_product_drop('<?php echo $cat_id ?>','<?php echo SITE_PATH?>')" id="sort_product_id">
-                                     <option vale="">Default softing</option>
-                                     <option value="price_low"<?php echo   $price_low_selected="selected"?>>Sort by price low to high</option>
-                                     <option value="price_high"<?php echo   $price_high_selected="selected"?>>Sort by price high to low</option>
-                                     <option value="new"<?php echo   $new_selected="selected"?>>Sort by new first</option>
-                                     <option value="old"<?php echo   $old_selected="selected"?>>Sort by old first</option>
+                                     <option vale="">Default sorting</option>
+                                     <option value="price_low"<?php echo  $price_low_selected?>>Sort by price low to high</option>
+                                     <option value="price_high"<?php echo  $price_high_selected?>>Sort by price high to low</option>
+                                     <option value="new"<?php echo $new_selected?>>Sort by new first</option>
+                                     <option value="old"<?php echo $old_selected?>>Sort by old first</option> 
                                  </select>
                              </div>
 
