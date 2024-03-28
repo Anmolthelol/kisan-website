@@ -30,11 +30,18 @@ function send_message() {
 function user_register() {
 
     jQuery('.field_error').html('');
+    var is_error = '';
     var name = jQuery("#name").val();
     var email = jQuery("#email").val();
     var mobile = jQuery("#mobile").val();
     var password = jQuery("#password").val();
     var is_error = '';
+    var formData = {
+        name: $("#name").val(),
+        email: $("#email").val(),
+        mobile :$("#mobile").val(),
+        password : $("#password").val(),
+    }
 
     if (name == "") {
         jQuery('#name_error').html('please enter name');
@@ -52,12 +59,14 @@ function user_register() {
         jQuery('#password_error').html('please enter password');
         is_error = 'yes';
     }
+    $('#register-form').trigger('reset');
 
     if (is_error == '') {
         jQuery.ajax({
             url: 'register_submit.php',
             type: 'post',
-            data: 'name=' + name + '&email=' + email + '&mobile=' + mobile + '&password=' + password,
+            data: formData,
+          
             success: function(result) {
                 if (result == 'email_present') {
                     jQuery('#email_error').html('Email id already present');
@@ -133,4 +142,4 @@ function sort_product_drop(cat_id,site_path){
     window.location.href=site_path+"categories.php?id="+cat_id+"&sort="+sort_product_id;
 }
     
-	
+	  

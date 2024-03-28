@@ -26,7 +26,7 @@ require('top.php');
             <div class="col-xs-12">
                 <div class="section__title--2 text-center">
                     <h2 class="title__line" style="padding-top: 50px;">ORDER COMPLETED</h2>
-                    <p>thenk you for shopping from kisan suvidha</p>
+                    <p>thank you for shopping from kisan suvidha</p>
                 </div>
             </div>
         </div>

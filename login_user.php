@@ -100,7 +100,7 @@ if(isset ($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN']=='yes'){
                                 </div>
                                 <span class="field_error" id="password_error"></span>
                             </div>
-
+                            
                             <div class="contact-btn">
                                 <button type="button" class="fv-btn" onclick="user_register()">Register</button>
                             </div>

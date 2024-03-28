@@ -11,30 +11,29 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
 
 
 $cart_total = 0;
-foreach ($_SESSION['cart'] as $key => $val) {
-    $productArr = get_product($con, '', '', $key);
-    $price = $productArr[0]['price'];
-    $qty = $val['qty'];
-    $cart_total = $cart_total + ($price * $qty);
-}
 
-
-
-if (isset($_POST['submit'])) {
-    $address = get_safe_value($con, $_POST['address']);
-    $city = get_safe_value($con, $_POST['city']);
-    $pincode = get_safe_value($con, $_POST['pincode']);
-    $payment_type = get_safe_value($con, $_POST['payment_type']);
-    $uid = $_SESSION['USER_ID'];
-    $total_price = $cart_total;
-    $payment_status = 'pending';
-    if ($payment_type == 'cod') {
-        $payment_status = 'success';
-    }
-    $order_status = '1';
-    $added_on = date('y-m-d h:i:s');
-
-    //$txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+if(isset($_POST['submit'])){
+	$address=get_safe_value($con,$_POST['address']);
+	$city=get_safe_value($con,$_POST['city']);
+	$pincode=get_safe_value($con,$_POST['pincode']);
+	$payment_type=get_safe_value($con,$_POST['payment_type']);
+	$user_id=$_SESSION['USER_ID'];
+	foreach($_SESSION['cart'] as $key=>$val){
+		$productArr=get_product($con,'','',$key);
+		$price=$productArr[0]['price'];
+		$qty=$val['qty'];
+		$cart_total=$cart_total+($price*$qty);
+		
+	}
+	$total_price=$cart_total;
+	$payment_status='pending';
+	if($payment_type=='cod'){
+		$payment_status='success';
+	}
+	$order_status='1';
+	$added_on=date('Y-m-d h:i:s');
+	
+    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid)
     values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid')");
@@ -52,85 +51,55 @@ if (isset($_POST['submit'])) {
     }
     unset($_SESSION['cart']);
 
-    if($payment_type == 'rezor'){
-    $MERCHANT_KEY = "gtKFFx"; 
-    $SALT = "eCwWELxi";
-    $hash_string = '';
-    //$PAYU_BASE_URL = "https://secure.payu.in";
-    $PAYU_BASE_URL = "https://test.payu.in";
-    $action = '';
-    $posted = array();
-    if(!empty($_POST)) {
-    foreach($_POST as $key => $value) {    
-        $posted[$key] = $value; 
-    }
-    }
+    if ($payment_type == 'instamojo') {
 
-    $userArr=mysqli_fetch_assoc(mysqli_query($con,"select * from users where uid='$uid'"));
+        $userArr = mysqli_fetch_assoc(mysqli_query($con, "select * from users where uid='$uid'"));
 
-    $formError = 0;
-    
-    $posted['txnid']=$txnid;
-    $posted['amount']=$total_price;
-    $posted['firstname']=$userArr['name'];
-    $posted['email']=$userArr['email'];
-    $posted['phone']=$userArr['mobile'];
-    $posted['productinfo']="productinfo";
-    $posted['key']=$MERCHANT_KEY ;
-    $hash = '';
-    $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
-    if(empty($posted['hash']) && sizeof($posted) > 0) {
-    if(
-            empty($posted['key'])
-            || empty($posted['txnid'])
-            || empty($posted['amount'])
-            || empty($posted['firstname'])
-            || empty($posted['email'])
-            || empty($posted['phone'])
-            || empty($posted['productinfo'])
-            
-    ) {
-        $formError = 1;
-    } else {    
-        $hashVarsSeq = explode('|', $hashSequence);
-        foreach($hashVarsSeq as $hash_var) {
-        $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
-        $hash_string .= '|';
-        }
-        $hash_string .= $SALT;
-        $hash = strtolower(hash('sha512', $hash_string));
-        $action = $PAYU_BASE_URL . '/_payment';
-    }
-    } elseif(!empty($posted['hash'])) {
-    $hash = $posted['hash'];
-    $action = $PAYU_BASE_URL . '/_payment';
-    }
+        //$posted['txnid']=$txnid;
 
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+        curl_setopt(
+            $ch,
+            CURLOPT_HTTPHEADER,
+            array("X-Api-Key:test_a5ee4680df615d01eb8396e1da4", "X-Auth-Token:test_939292b985fc3339fc5fb21521d")
+        );
 
-    $formHtml ='<form method="post" name="payuForm" id="payuForm" action="'.$action.'">
-    <input type="hidden" name="key" value="'.$MERCHANT_KEY.'" />
-    <input type="hidden" name="hash" value="'.$hash.'"/>
-    <input type="hidden" name="txnid" value="'.$posted['txnid'].'" />
-    <input name="amount" type="hidden" value="'.$posted['amount'].'" />
-    <input type="hidden" name="firstname" id="firstname" value="'.$posted['firstname'].'" />
-    <input type="hidden" name="email" id="email" value="'.$posted['email'].'" />
-    <input type="hidden" name="phone" value="'.$posted['phone'].'" />
-    <textarea name="productinfo" style="display:none;">'.$posted['productinfo'].
-    '</textarea><input type="hidden" name="surl" value="http://localhost/phpadmindashboard/kisan-website/payment_complete.php" />
-    <input type="hidden" name="furl" value="http://localhost/phpadmindashboard/kisan-website/payment_fail.php"/><input type="submit" style="display:none;"/></form>';
-    echo $formHtml;
-    echo '<script>document.getElementById("payuForm").submit();</script>';
-    }else{
+        $payload = array(
+            'purpose' => 'Buy Product',
+            'amount' => $total_price,
+            'phone' => $userArr['mobile'],
+            'buyer_name' => $userArr['name'],
+            'redirect_url' => 'http://localhost/phpadmindashboard/kisan-website/payment_complete.php',
+            'send_email' => false,
+            'send_sms' => false,
+            'email' => $userArr['email'],
+            'allow_repeated_payments' => false
+        );
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+        $response = curl_exec($ch);
+        curl_close($ch);
+        $response = json_decode($response);
+        $_SESSION['TID'] = $response->payment_request->id;
+        mysqli_query($con, "update orders set txnid='" . $response->payment_request->id . "' where id='" . $order_id . "'");
+    ?>
+        <script>
+            window.location.href = '<?php echo $response->payment_request->longurl ?>';
+        </script>
+    <?php
+    } else {
 
 
     ?>
-    <script>
-        window.location.href = 'thank_you.php';
-    </script>
-    <?php
+        <script>
+            window.location.href = 'thank_you.php';
+        </script>
+<?php
     }
-
-  
 }
 
 ?>
@@ -199,8 +168,8 @@ if (isset($_POST['submit'])) {
                                 <div class="accordion__body">
                                     <div class="paymentinfo">
                                         <div class="single-method">
-                                           <!-- COD<input type="radio" name="payment_type" value="COD" required />-->
-                                            &nbsp;&nbsp;Rezorpay<input type="radio" name="payment_type" value="rezor" required />
+                                            COD <input type="radio" name="payment_type" value="COD" required />
+                                            &nbsp;&nbsp;Instamojo <input type="radio" name="payment_type" value="instamojo" required />
                                         </div>
                                         <div class="single-method">
 
