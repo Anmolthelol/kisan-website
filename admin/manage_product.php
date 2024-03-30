@@ -99,8 +99,7 @@ if(isset($_POST['submit'])){
 	   }else{
 		  $image=rand(111111111,999999999).'_'.$_FILES['image']['name']; 
 		  move_uploaded_file($_FILES['image']['tmp_name'],PRODUCT_IMAGE_SERVER_PATH.$image);
-		  mysqli_query($con,"insert into 
-		  product(category_id,product_name,mrp,price,qty,short_description,description,meta_title,meta_description,,best_seller,meta_keyword,status,image) 
+		  mysqli_query($con,"insert into product(category_id,product_name,mrp,price,qty,short_description,description,meta_title,meta_description,best_seller,meta_keyword,status,image) 
 		  values('$category_id','$product_name','$mrp','$price','$qty','$short_description','$description','$meta_title','$meta_description','$best_seller','$meta_keyword',1,'$image')");
 	   }
 	
