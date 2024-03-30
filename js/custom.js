@@ -117,7 +117,7 @@ function user_login() {
 
 }
 
-function manage_cart(pid, type) {
+function manage_cart(pid, type,is_checkout) {
     if(type=='update'){
         var qty=jQuery("#"+pid+"qty").val();
     }else{
@@ -132,7 +132,12 @@ function manage_cart(pid, type) {
             if(type=='update'|| type=='remove'){
                 window.location.href=window.location.href;
             }
+            else{
             jQuery('.htc__qua').html(result);
+            if(is_checkout=='yes'){
+                window.location.href='checkout.php';
+            }
+            }
         }
     });
 }
