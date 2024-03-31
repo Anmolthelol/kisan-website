@@ -46,10 +46,13 @@ if(isset ($_SESSION['ADMIN_LOGIN']) &&  $_SESSION['ADMIN_LOGIN']!=''){
                      <a href="categories.php" > Categories Master</a>
                   </li>
                   <li class="menu-item-has-children dropdown">
-                     <a href="product.php" > Product Master</a>
+                     <a href="coupon_master.php" > Product Master</a>
                   </li>
 				  <li class="menu-item-has-children dropdown">
                      <a href="order_master.php" > Order Master</a>
+                  </li>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="order_master.php" > Coupon Master</a>
                   </li>
 				  <li class="menu-item-has-children dropdown">
                      <a href="users.php" > User Master</a>
