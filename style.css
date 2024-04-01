@@ -3562,5 +3562,22 @@ ul.htc__instagram__posts.owl-carousel li img {
     outline: none;
 }
 
-
-
+.email_verify_otp{display: none;}
+.height_60px{height: 60px;}
+.margin-block{margin-block: auto;}
+#email_otp_result{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight:  bold;
+}
+.mobile_verify_otp{display: none;}
+.margin-block{margin-block: auto;}
+#mobile_otp_result{
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight:  bold;
+}
+.forgot_password{
+    margin-left: 20px;
+    font-size: 20px;
+}

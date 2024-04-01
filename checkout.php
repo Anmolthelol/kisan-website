@@ -6,33 +6,33 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
     <script>
         window.location.href = 'index.php';
     </script>
-    <?php
+<?php
 }
 
 
 $cart_total = 0;
 
-if(isset($_POST['submit'])){
-	$address=get_safe_value($con,$_POST['address']);
-	$city=get_safe_value($con,$_POST['city']);
-	$pincode=get_safe_value($con,$_POST['pincode']);
-	$payment_type=get_safe_value($con,$_POST['payment_type']);
-	$user_id=$_SESSION['USER_ID'];
-	foreach($_SESSION['cart'] as $key=>$val){
-		$productArr=get_product($con,'','',$key);
-		$price=$productArr[0]['price'];
-		$qty=$val['qty'];
-		$cart_total=$cart_total+($price*$qty);
-		
-	}
-	$total_price=$cart_total;
-	$payment_status='pending';
-	if($payment_type=='cod'){
-		$payment_status='success';
-	}
-	$order_status='1';
-	$added_on=date('Y-m-d h:i:s');
-	
+if(isset($_POST['confirmed'])) {
+    $address = get_safe_value($con, $_POST['address']);
+    $city = get_safe_value($con, $_POST['city']);
+    $pincode = get_safe_value($con, $_POST['pincode']);
+    $payment_type = "";
+    // = get_safe_value($con, $_POST['payment_type']);
+    $user_id = $_SESSION['USER_ID'];
+    foreach ($_SESSION['cart'] as $key => $val) {
+        $productArr = get_product($con, '', '', $key);
+        $price = $productArr[0]['price'];
+        $qty = $val['qty'];
+        $cart_total = $cart_total + ($price * $qty);
+    }
+    $total_price = $cart_total;
+    $payment_status = 'pending';
+    if ($payment_type == 'cod') {
+        $payment_status = 'success';
+    }
+    $order_status = '1';
+    $added_on = date('Y-m-d h:i:s');
+
     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid)
@@ -50,56 +50,9 @@ if(isset($_POST['submit'])){
         values('$order_id','$key','$qty','$price')");
     }
     unset($_SESSION['cart']);
-
-    if ($payment_type == 'instamojo') {
-
-        $userArr = mysqli_fetch_assoc(mysqli_query($con, "select * from users where uid='$uid'"));
-
-        //$posted['txnid']=$txnid;
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
-        curl_setopt($ch, CURLOPT_HEADER, FALSE);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
-        curl_setopt(
-            $ch,
-            CURLOPT_HTTPHEADER,
-            array("X-Api-Key:test_a5ee4680df615d01eb8396e1da4", "X-Auth-Token:test_939292b985fc3339fc5fb21521d")
-        );
-
-        $payload = array(
-            'purpose' => 'Buy Product',
-            'amount' => $total_price,
-            'phone' => $userArr['mobile'],
-            'buyer_name' => $userArr['name'],
-            'redirect_url' => 'http://localhost/phpadmindashboard/kisan-website/payment_complete.php',
-            'send_email' => false,
-            'send_sms' => false,
-            'email' => $userArr['email'],
-            'allow_repeated_payments' => false
-        );
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
-        $response = curl_exec($ch);
-        curl_close($ch);
-        $response = json_decode($response);
-        $_SESSION['TID'] = $response->payment_request->id;
-        mysqli_query($con, "update orders set txnid='" . $response->payment_request->id . "' where id='" . $order_id . "'");
-    ?>
-        <script>
-            window.location.href = '<?php echo $response->payment_request->longurl ?>';
-        </script>
-    <?php
-    } else {
-
-
-    ?>
-        <script>
-            window.location.href = 'thank_you.php';
-        </script>
-<?php
-    }
+    //here rough file text to paste   ---------------------------------------------------
+    header('location:thank_you.php');
+    die();
 }
 
 ?>
@@ -128,56 +81,116 @@ if(isset($_POST['submit'])){
             <div class="col-md-8">
                 <div class="checkout__inner">
                     <div class="accordion-list">
-                        <div class="accordion">
+                        <div class="accordion bg-light" >
 
-                            <div class="accordion__title">
+                            <!-- <div class="accordion__title">
                                 Checkout Method
-                            </div>
+                            </div> -->
 
 
-                            <div class="accordion__title">
-                                Address Information
+                            <div class="">
+                                <h2>
+                                    Address Information
+                                </h2>
                             </div>
-                            <form method="post">
+                            <form method="POST" action="order_process.php" id="paymentForm">
                                 <div class="accordion__body">
                                     <div class="bilinfo">
-
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="single-input">
-                                                    <input type="text" name="address" placeholder="Street Address" required>
+                                                    <input type="text" name="address" id="address" placeholder="Street Address" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <input type="text" name="city" placeholder="City/State" required>
+                                                    <input type="text" name="city" id="city" placeholder="City/State" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <input type="text" name="pincode" placeholder="Post code/ zip" required>
+                                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;"  name="pincode" id="pincode" placeholder="Post code/ zip">
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-                                <div class="accordion__title">
-                                    payment information
+                                <div class="col-6" style="margin-bottom: 20px;">
+                                    <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow"  value="Proceed payment"/>
                                 </div>
-                                <div class="accordion__body">
-                                    <div class="paymentinfo">
-                                        <div class="single-method">
-                                            COD <input type="radio" name="payment_type" value="COD" required />
-                                            &nbsp;&nbsp;Instamojo <input type="radio" name="payment_type" value="instamojo" required />
-                                        </div>
-                                        <div class="single-method">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" />
+                               
+                              
                             </form>
+
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script>
+                                $(document).ready(function() {
+                                    $('#submitBtn').click(function(e) {
+                                        // e.preventDefault(); // Prevent the default form submission behavior
+                                        console.log("Form submission prevented");
+
+                                        // Retrieve user name and total amount
+                                        var name = "<?php echo $_SESSION['USER_NAME'] ?>";
+                                        var amt = $("#totalPrice").text();
+                                        var userId = "<?php echo $_SESSION['USER_ID'] ?>";
+
+
+                                        let address = $('#address').val();
+                                        let city = $('#city').val();
+                                        let pincode = $('#pincode').val();
+
+                                        let validate = false;
+                                        if(address != '' && city != '' && pincode != ''){
+                                            validate = true;
+                                        }
+
+                                        if(validate){
+                                            // Make AJAX request to Razorpay payment_process.php
+                                            jQuery.ajax({
+                                                type: 'post',
+                                                url: 'razorpay/payment_process.php',
+                                                data: {
+                                                    amt: amt,
+                                                    name: name
+                                                },
+                                                success: function(result) {
+                                                    var options = {
+                                                        "key": "rzp_test_ZzcGlK3pyzA67u",
+                                                        "amount": amt * 100,
+                                                        "currency": "INR",
+                                                        "name": "Kissan Suvidha",
+                                                        "description": "Test Transaction",
+                                                        "image": "https://image.freepik.com/free-vector/logo-sample-text_355-558.jpg",
+                                                        "handler": function(response) {
+                                                            // Trigger form submission after successful payment
+                                                            jQuery.ajax({
+                                                                type: 'post',
+                                                                url: 'razorpay/payment_process.php',
+                                                                data: {
+                                                                    payment_id: response.razorpay_payment_id
+                                                                },
+                                                                success: function(result) {
+                                                                    // Now, submit the form to order_process.php
+                                                                    
+                                                                    console.log("Razorpay payment successful");
+                                                                   $('#paymentForm').submit();
+    
+                                                                }
+                                                            });
+                                                        }
+                                                    };
+                                                    var rzp1 = new Razorpay(options);
+                                                    rzp1.open();
+                                                  
+                                                }
+                                            });
+                                        } else {
+                                            alert('Please fill the address');
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
@@ -214,7 +227,7 @@ if(isset($_POST['submit'])){
 
                         <div class="ordre-details__total">
                             <h5>Order total</h5>
-                            <span class="price"><?php echo $cart_total ?></span>
+                            <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
                         </div>
                     </div>
                 </div>

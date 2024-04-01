@@ -26,11 +26,12 @@ $res=mysqli_query($con,$sql);
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $uid= $_SESSION['USER_ID'];
+                                            $uid=get_safe_value($con,$_GET['uid']);
                                             $sql="select * from orders where uid='$uid'";
                                             $res=mysqli_query($con,$sql);
                                             while($row=mysqli_fetch_assoc($res)){
                                             ?>
+                                            
                                             <tr>
                                                 <td class="product-add-to-cart"><a href="order_master_details.php?id=<?php echo $row['id']?>"><?php echo $row['id']?></a></td>
                                                 <td class="product-name"><a href="#">
@@ -49,6 +50,7 @@ $res=mysqli_query($con,$sql);
                                                 
                                                 
                                             </tr>
+                                            
                                            <?php } ?>
                                         </tbody>
                                        

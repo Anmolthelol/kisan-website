@@ -1,0 +1,68 @@
+//     if ($payment_type == 'instamojo') {
+
+//         $userArr = mysqli_fetch_assoc(mysqli_query($con, "select * from users where uid='$uid'"));
+
+//         //$posted['txnid']=$txnid;
+
+//         $ch = curl_init();
+//         curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
+//         curl_setopt($ch, CURLOPT_HEADER, FALSE);
+//         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+//         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+//         curl_setopt(
+//             $ch,
+//             CURLOPT_HTTPHEADER,
+//             array("X-Api-Key:test_a5ee4680df615d01eb8396e1da4", "X-Auth-Token:test_939292b985fc3339fc5fb21521d")
+//         );
+
+//         $payload = array(
+//             'purpose' => 'Buy Product',
+//             'amount' => $total_price,
+//             'phone' => $userArr['mobile'],
+//             'buyer_name' => $userArr['name'],
+//             'redirect_url' => 'http://localhost/phpadmindashboard/kisan-website/payment_complete.php',
+//             'send_email' => false,
+//             'send_sms' => false,
+//             'email' => $userArr['email'],
+//             'allow_repeated_payments' => false
+//         );
+//         curl_setopt($ch, CURLOPT_POST, true);
+//         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($payload));
+//         $response = curl_exec($ch);
+//         curl_close($ch);
+//         $response = json_decode($response);
+//         $_SESSION['TID'] = $response->payment_request->id;
+//         mysqli_query($con, "update orders set txnid='" . $response->payment_request->id . "' where id='" . $order_id . "'");
+//     ?>
+//         <script>
+//             window.location.href = '<?php echo $response->payment_request->longurl ?>';
+//         </script>
+//     <?php
+//     } else {
+
+
+//     ?>
+//         <script>
+//             window.location.href = 'thank_you.php';
+//         </script>
+// <?php
+//     }
+
+// login / logout top
+
+<?php if (isset($_SESSION['USER_LOGIN'])) {
+    echo "<li><a href='logout.php' >Logout</a></li><li><a href='my_order.php'>My Order</a></li>";
+} else {
+    echo '<li><a href="login_user.php">login/register</a><li>';
+}
+?>
+
+
+//payment type
+
+COD <input type="radio" name="payment_type" value="COD" required />
+&nbsp;&nbsp;Instamojo <input type="radio" name="payment_type" value="instamojo" required />'
+
+
+
+'

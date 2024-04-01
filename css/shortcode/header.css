@@ -20,6 +20,9 @@
 .main__menu {
   display: flex;
   justify-content: center;
+  width: 127%;
+  margin-left: -54px;
+  align-items: center;
 }
 .main__menu > li > a {
     color: #333333;
@@ -40,6 +43,7 @@
 }
 .logo a{
   display: block;
+  
 }
 .header__right {
   display: flex;
@@ -508,9 +512,10 @@ nav.off__canvars--menu ul li ul li a:hover {
 }
 .logo {
     align-items: center;
-    display: flex;
+    /* display: flex; */
     height: 80px;
-    justify-content: flex-start;
+    width: 80px;
+    /* justify-content: flex-start; */
 }
 
 .htc__contact a i {

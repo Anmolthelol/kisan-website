@@ -1,5 +1,15 @@
 <?php
 require('top.php');
+if (isset($_GET['name'])){
+    $name = $_GET['name'];
+    
+    $amt = $_GET['amt'];
+    $totalAmt = $_GET['amt'];
+    
+    $qty = $_GET['qty'];
+
+    
+}
 
 ?>
 
@@ -27,6 +37,13 @@ require('top.php');
                 <div class="section__title--2 text-center">
                     <h2 class="title__line" style="padding-top: 50px;">ORDER COMPLETED</h2>
                     <p>thank you for shopping from kisan suvidha</p>
+                    <?php  
+                    echo "$name <br>  $amt  <br>
+               $totalAmt <br>
+
+                    $qty ";
+    
+?>
                 </div>
             </div>
         </div>
