@@ -51,6 +51,9 @@ if(isset ($_SESSION['ADMIN_LOGIN']) &&  $_SESSION['ADMIN_LOGIN']!=''){
 				  <li class="menu-item-has-children dropdown">
                      <a href="order_master.php" > Order Master</a>
                   </li>
+                  <li class="menu-item-has-children dropdown">
+                     <a href="coupon_master.php" > Coupon Master</a>
+                  </li>
 				  <li class="menu-item-has-children dropdown">
                      <a href="users.php" > User Master</a>
                   </li>

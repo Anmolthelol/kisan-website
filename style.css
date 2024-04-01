@@ -3561,6 +3561,12 @@ ul.htc__instagram__posts.owl-carousel li img {
 .slick-initialized .slick-slide {
     outline: none;
 }
+.forgot_password{
+    margin-left: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
 
 .email_verify_otp{display: none;}
 .height_60px{height: 60px;}

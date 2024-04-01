@@ -59,7 +59,6 @@ if (isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN'] == 'yes') {
                             <div class="contact-btn">
                                 <button type="button" class="fv-btn" onclick="user_login()">Login</button>
                                 <a href="forgot_password.php " class="forgot_password">Forgot Password</a>
-
                             </div>
                         </form>
                         <div class="form-output login_msg">
