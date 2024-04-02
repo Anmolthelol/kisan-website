@@ -147,6 +147,7 @@ if(isset($_POST['submit'])){
 								   </label>
 							       <select class="form-control" name="best_seller" required>
 										<option value=''>Select</option>
+										<?php
 										if($best_seller==1){
 											echo '<option value="1" selected>Yes</option>
 												<option value="0">No</option>';
@@ -157,6 +158,7 @@ if(isset($_POST['submit'])){
 											echo '<option value="1" >Yes</option>
 												<option value="0" >No</option>';
 										}
+										?>
 										
 									</select>
 						        </div>
@@ -220,7 +222,7 @@ if(isset($_POST['submit'])){
 								<button name="cancel" class="btn btn-outline-danger w3-myfont px-2 py-2 m-2 float-right shadow-none  waves-effect waves-light" 
 								id="cancelslider">Cancel
 							    </button>
-							    <button id="payment-button" type="submit" name="submit" class="btn btn-info px-2 py-2 m-2  w3-myfont float-right waves-effect waves-light" style="font-size: 13pt;" 
+							    <button id="payment-button" type="submit" name="submit" class="btn btn-info px-2 py-2 m-2  w3-myfont float-right waves-effect waves-light" style="font-size: 13pt;"> 
 							    <span id="payment-button-amount">Submit</span>
 							    </button>
 							 

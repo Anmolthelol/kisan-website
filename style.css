@@ -2842,7 +2842,8 @@ a.shipping-calculator-button:hover{
     padding: 0 30px;
     text-transform: uppercase;
     transition: all 0.4s ease 0s;
-    margin-top: 20px;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 .fv-btn:hover {
     background: transparent none repeat scroll 0 0;
@@ -3518,7 +3519,7 @@ ul.htc__instagram__posts.owl-carousel li img {
     font-weight: 700;
 }
 .order-details .ordre-details__total span.price{
-    width: 30%;
+    /* width: 30%; */
     text-align: left;
     font-weight: 700;
     font-family: "Poppins";
@@ -3565,6 +3566,22 @@ ul.htc__instagram__posts.owl-carousel li img {
     margin-left: 20px;
     font-size: 15px;
     font-weight: bold;
+}
+.coupon_style{
+    width: 80%;
+    height: 50px;
+}
+.mr5{
+    margin-right: 5px;
+}
+#coupon_result{
+    padding: 33px;
+    padding-top: 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+#coupon_box{
+    display: none;
 }
 
 

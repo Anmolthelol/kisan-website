@@ -39,13 +39,12 @@ $res = mysqli_query($con, $sql);
 							<table class="table ">
 								<thead>
 									<tr>
-										<th class="serial">#</th>
+									
 										<th width="2%">ID</th>
 										<th width="20%">Coupon Code</th>
 										<th width="20%">Coupon value</th>
 										<th width="20%">Coupon Type</th>
 										<th width="10%">Min Value</th>
-										<th width="26%"></th>
 										<th></th>
 									</tr>
 								</thead>
