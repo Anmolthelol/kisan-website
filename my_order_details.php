@@ -1,6 +1,8 @@
 <?php
 require('top.php');
 $order_id = get_safe_value($con, $_GET['id']);
+$coupon_details=mysqli_fetch_assoc(mysqli_query($con,"select coupon_value from orders where id='$order_id"));
+$coupon_value=$coupon_details['coupon_value'];
 ?>
 
 <div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
@@ -12,7 +14,7 @@ $order_id = get_safe_value($con, $_GET['id']);
                         <nav class="bradcaump-inner">
                             <a class="breadcrumb-item" href="index.html">Home</a>
                             <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active">Thank YOu</span>
+                            <span class="breadcrumb-item active">Thank You</span>
                         </nav>
                     </div>
                 </div>
@@ -61,12 +63,22 @@ $order_id = get_safe_value($con, $_GET['id']);
                                             </td>
 
                                         </tr>
-                                    <?php } ?>
+                                    <?php 
+                                    if($coupon_value!=''){
+                                    ?>
+                                    <tr>
+                                        <td colspan="3"></td>
+                                        <td class="product-name">Coupon Value
+                                        </td>
+                                        <td class="product-name"><?php echo $coupon_value ?>
+                                        </td>
+                                    </tr>
+                                    <?php }?>
                                     <tr>
                                         <td colspan="3"></td>
                                         <td class="product-name">TOTAL PRICE
                                         </td>
-                                        <td class="product-name"><?php echo $total_price ?>
+                                        <td class="product-name"><?php echo $total_price-$coupon_value ?>
                                         </td>
 
                                     </tr>

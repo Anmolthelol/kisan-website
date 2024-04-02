@@ -34,9 +34,23 @@ if (isset($_POST['confirmed'])) {
     $added_on = date('Y-m-d h:i:s');
 
     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+    if(isset($_SESSION['COUPON_ID'])){
+        $coupon_id=($_SESSION['COUPON_ID']);
+        $coupon_code=($_SESSION['COUPON_CODE']);
+        $coupon_value=($_SESSION['COUPON_VALUE']);
+        $total_price=$total_price-$coupon_value;
+        unset($_SESSION['COUPON_ID']);
+        unset($_SESSION['COUPON_CODE']);
+        unset($_SESSION['COUPON_VALUE']);
+    }else{
+        $coupon_id='';
+        $coupon_code='';
+        $coupon_value='';
 
-    mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid)
-    values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid')");
+    }
+
+    mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid,coupon_id,coupon_code,coupon_value)
+    values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid','$coupon_id','$coupon_code','$coupon_value')");
 
     $order_id = mysqli_insert_id($con);
 
@@ -118,8 +132,28 @@ if (isset($_POST['confirmed'])) {
                                 <div class="col-6" style="margin-bottom: 20px;">
                                     <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow" value="Proceed payment" />
                                 </div>
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+                                <div class="accordion__body">
+                                    <div class="paymentinfo">
+                                        <div class="single-method">
+                                            COD <input type="radio" name="payment_type" value="COD" required />
+                                            &nbsp;&nbsp;Instamojo <input type="radio" name="payment_type" value="instamojo" required />
+                                        </div>
+                                        <div class="single-method">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" name="submit" class="fv-btn"/>
+=======
+                               
+                              
+>>>>>>> d74564f7499a4e82da78fc05858b2d51f44de3bb
+>>>>>>> 58e3dc74e579b8f29cdbae3c9eef95d4b606b04d
                             </form>
 
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -208,7 +242,7 @@ if (isset($_POST['confirmed'])) {
                         <?php
                         $cart_total = 0;
                         foreach ($_SESSION['cart'] as $key => $val) {
-                            $productArr = get_product($con, '', '', $key);
+                            $productArr=get_product($con, '', '', $key);
                             $pname = $productArr[0]['product_name'];
                             $mrp = $productArr[0]['mrp'];
                             $price = $productArr[0]['price'];
@@ -230,14 +264,60 @@ if (isset($_POST['confirmed'])) {
                                 </div>
                             </div>
                         <?php } ?>
-
+                    </div>
+                    <div class="ordre-details__total" id="coupon_box">
+                            <h5>Coupon Value</h5>
+                            <span class="price" id="coupon_price"></span>
+                        </div>
                         <div class="ordre-details__total">
                             <h5>Order total</h5>
+<<<<<<< HEAD
+                            <span class="price" id="order_total_price"><?php echo $cart_total ?></span>
+=======
                             <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
+>>>>>>> d74564f7499a4e82da78fc05858b2d51f44de3bb
                         </div>
+                        <div class="ordre-details__total bilinfo">
+                            <input type="textbox" id="coupon_str" class="coupon_style mr5"/>
+                            <input type="button" name="submit" class="fv-btn coupon_style" value="Apply Coupon" onclick="set_coupon()"/>
+                        </div>
+                        <div id="coupon_result"></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <?php require('footer.php') ?>
+    <script>
+        function set_coupon(){
+            var coupon_str=jQuery('#coupon_str').val();
+            if(coupon_str!=''){
+                jQuery('#coupon_result').html('');
+                jQuery.ajax({
+                    url:'set_coupon.php',
+                    type:'post',
+                    data:'coupon_str='+coupon_str,
+                    success:function(result){
+                        var data=jQuery.parseJSON(result);
+                        console.log(data.is_error);
+                        if(data.is_error=='yes'){
+                            jQuery('#coupon_box').hide();
+                            jQuery.('#coupon_result').html(data.dd);
+                            jQuery.('#order_total_price').html(data.result);
+                        }
+                        if(data.is_error=='no'){
+                            jQuery('#coupon_box').show();
+                            jQuery.('#coupon_price').html(data.dd);
+                            jQuery.('#order_total_price').html(data.result);
+                        }
+                    }
+                });
+            }
+        }
+    </script>
+    <?php 
+    if(isset($_SESSION['COUPON_ID'])){
+        unset($_SESSION['COUPON_ID']);
+        unset($_SESSION['COUPON_CODE']);
+        unset($_SESSION['COUPON_VALUE']);
+    }
+    require('footer.php') ?>
