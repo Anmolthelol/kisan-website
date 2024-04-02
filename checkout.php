@@ -132,28 +132,7 @@ if (isset($_POST['confirmed'])) {
                                 <div class="col-6" style="margin-bottom: 20px;">
                                     <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow" value="Proceed payment" />
                                 </div>
-<<<<<<< HEAD
-
-
-=======
-<<<<<<< HEAD
-                                <div class="accordion__body">
-                                    <div class="paymentinfo">
-                                        <div class="single-method">
-                                            COD <input type="radio" name="payment_type" value="COD" required />
-                                            &nbsp;&nbsp;Instamojo <input type="radio" name="payment_type" value="instamojo" required />
-                                        </div>
-                                        <div class="single-method">
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="submit" name="submit" class="fv-btn"/>
-=======
-                               
-                              
->>>>>>> d74564f7499a4e82da78fc05858b2d51f44de3bb
->>>>>>> 58e3dc74e579b8f29cdbae3c9eef95d4b606b04d
+                            
                             </form>
 
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -271,11 +250,11 @@ if (isset($_POST['confirmed'])) {
                         </div>
                         <div class="ordre-details__total">
                             <h5>Order total</h5>
-<<<<<<< HEAD
+
                             <span class="price" id="order_total_price"><?php echo $cart_total ?></span>
-=======
+
                             <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
->>>>>>> d74564f7499a4e82da78fc05858b2d51f44de3bb
+
                         </div>
                         <div class="ordre-details__total bilinfo">
                             <input type="textbox" id="coupon_str" class="coupon_style mr5"/>
@@ -301,13 +280,13 @@ if (isset($_POST['confirmed'])) {
                         console.log(data.is_error);
                         if(data.is_error=='yes'){
                             jQuery('#coupon_box').hide();
-                            jQuery.('#coupon_result').html(data.dd);
-                            jQuery.('#order_total_price').html(data.result);
+                            jQuery('#coupon_result').html(data.dd);
+                            jQuery('#order_total_price').html(data.result);
                         }
                         if(data.is_error=='no'){
                             jQuery('#coupon_box').show();
-                            jQuery.('#coupon_price').html(data.dd);
-                            jQuery.('#order_total_price').html(data.result);
+                            jQuery('#coupon_price').html(data.dd);
+                            jQuery('#order_total_price').html(data.result);
                         }
                     }
                 });

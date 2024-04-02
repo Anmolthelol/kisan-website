@@ -1,6 +1,6 @@
 <?php
 require ('database.php');
-require ('function.inc..php');
+require ('functions.inc.php');
 $coupon_str = get_safe_value($con, $_POST('coupon_str'));
 $res = mysqli_query($con, "select * from coupon_master where coupon_code='$coupon_str' and status='1'");
 $count = mysqli_num_rows($res);

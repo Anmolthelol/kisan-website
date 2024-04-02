@@ -74,6 +74,7 @@ $coupon_value=$coupon_details['coupon_value'];
                                         </td>
                                     </tr>
                                     <?php }?>
+                                <?php }?>
                                     <tr>
                                         <td colspan="3"></td>
                                         <td class="product-name">TOTAL PRICE
@@ -93,5 +94,4 @@ $coupon_value=$coupon_details['coupon_value'];
     </div>
 </div>
 
-<?php
-require('footer.php'); ?>
+<?php  require('footer.php') ?>
