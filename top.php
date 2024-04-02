@@ -9,6 +9,8 @@ while ($row = mysqli_fetch_assoc($cat_res)) {
 }
 $obj = new add_to_cart();
 $totalProduct = $obj->totalProduct();
+
+
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -28,6 +30,10 @@ $totalProduct = $obj->totalProduct();
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/custom.css">
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
 </head>
 
 <body>
@@ -43,7 +49,7 @@ $totalProduct = $obj->totalProduct();
                 <div class="container">
                     <div class="row">
                         <div class="menumenu__container clearfix">
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
                                 <div class="logo">
                                     <a href="index.html"><img src="images/logo/kisanlogo.png" alt="Logo">
                                     </a>
@@ -51,7 +57,7 @@ $totalProduct = $obj->totalProduct();
                             </div>
                             <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
-                                    <ul class="main__menu">
+                                    <ul style= "" class="main__menu">
                                         <li class="drop"><a href="index.php">Home</a></li>
                                         <?php
                                         foreach ($cat_arr as $list) {
@@ -61,8 +67,15 @@ $totalProduct = $obj->totalProduct();
                                         <?php
                                         }
                                         ?>
-                                        <li><a href="scheme.php">Scheme</a></li>
+                                        <li><a href="scheme.php" >Scheme</a></li>
                                         <li><a href="contact.php">Contact</a></li>
+                                        <?php if (isset($_SESSION['USER_LOGIN'])) {
+                                            echo "<li><a href='logout.php' >Logout</a></li><li><a href='my_order.php'>My Order</a></li>";
+                                        } else {
+                                            echo '<li><a href="login_user.php">login/register</a><li>';
+                                        }
+                                        ?>
+                                        
                                     </ul>
                                 </nav>
                                 <div class="mobile-menu clearfix visible-xs visible-sm">
@@ -78,6 +91,7 @@ $totalProduct = $obj->totalProduct();
                                             }
                                             ?>
                                             <li><a href="contact.php">contact</a></li>
+                                            
                                         </ul>
                                     </nav>
                                 </div>
@@ -88,12 +102,7 @@ $totalProduct = $obj->totalProduct();
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
                                     <div class="header__account">
-                                        <?php if (isset($_SESSION['USER_LOGIN'])) {
-                                            echo '<a href="logout.php">Logout</a><a href="my_order.php">My Order</a>';
-                                        } else {
-                                            echo '<a href="login_user.php">login/register</a>';
-                                        }
-                                        ?>
+                                        
                                     </div>
                                     <div class="htc__shopping__cart">
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>

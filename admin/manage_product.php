@@ -222,7 +222,11 @@ if(isset($_POST['submit'])){
 								<button name="cancel" class="btn btn-outline-danger w3-myfont px-2 py-2 m-2 float-right shadow-none  waves-effect waves-light" 
 								id="cancelslider">Cancel
 							    </button>
+<<<<<<< HEAD
 							    <button id="payment-button" type="submit" name="submit" class="btn btn-info px-2 py-2 m-2  w3-myfont float-right waves-effect waves-light" style="font-size: 13pt;"> 
+=======
+							    <button id="payment-button" type="submit" name="submit" class="btn btn-info px-2 py-2 m-2  w3-myfont float-right waves-effect waves-light" style="font-size: 13pt;">
+>>>>>>> d74564f7499a4e82da78fc05858b2d51f44de3bb
 							    <span id="payment-button-amount">Submit</span>
 							    </button>
 							 

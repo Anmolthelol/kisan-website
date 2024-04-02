@@ -40,9 +40,10 @@ require('top.php');
                                         <tbody>
                                             <?php
                                             $uid= $_SESSION['USER_ID'];
-                                            $sql="select * from orders where uid='$uid'";
+                                            //$uid=get_safe_value($con,$_GET['id']);
+                                            //$sql="select * from orders where uid='$uid'";
                                             //$sql="select orders.*,order_status.name as order_status_str from orders,order_status where orders.uid='$uid'and order_status.id=orders.order_status";
-                                            $res=mysqli_query($con,$sql);
+                                            $res=mysqli_query($con,"select `order`.*,order_status.name as order_status_str from orders,order_status where orders.uid='$uid' and order_status.id=orders.order_status order by orders.id desc");
                                             while($row=mysqli_fetch_assoc($res)){
                                             ?>
                                             <tr>
