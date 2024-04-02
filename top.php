@@ -57,7 +57,7 @@ $totalProduct = $obj->totalProduct();
                             </div>
                             <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
-                                    <ul style= "" class="main__menu">
+                                    <ul  class="main__menu">
                                         <li class="drop"><a href="index.php">Home</a></li>
                                         <?php
                                         foreach ($cat_arr as $list) {

@@ -31,7 +31,6 @@ require('top.php');
                                                 <th class="product-thumbnail">Order ID</th>
                                                 <th class="product-name"><span class="nobr">Order Date</span></th>
                                                 <th class="product-price"><span class="nobr">Address </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Payment Type </span></th>
                                                 <th class="product-stock-stauts"><span class="nobr"> Payment Status </span></th>
                                                 <th class="product-stock-stauts"><span class="nobr"> Order Status  </span></th>
                                                 
@@ -41,9 +40,16 @@ require('top.php');
                                             <?php
                                             $uid= $_SESSION['USER_ID'];
                                             //$uid=get_safe_value($con,$_GET['id']);
-                                            //$sql="select * from orders where uid='$uid'";
+                                            // $sql="select * from orders where uid='$uid'";
+
+                                            $sql = "SELECT orders.id, orders.uid, orders.address,orders.city,orders.pincode,orders.total_price,orders.payment_status,orders.order_status,orders.payment_id,orders.added_on, order_status.name
+                                            FROM orders
+                                            JOIN order_status ON orders.order_status = order_status.id;
+                                            "; 
+                                            $res=mysqli_query($con,$sql);
+                                            
                                             //$sql="select orders.*,order_status.name as order_status_str from orders,order_status where orders.uid='$uid'and order_status.id=orders.order_status";
-                                            $res=mysqli_query($con,"select `order`.*,order_status.name as order_status_str from orders,order_status where orders.uid='$uid' and order_status.id=orders.order_status order by orders.id desc");
+                                            //$res=mysqli_query($con,"select orders.*,order_status.name as order_status_str from orders,order_status where orders.uid='$uid' and order_status.id=orders.order_status order by orders.id desc");
                                             while($row=mysqli_fetch_assoc($res)){
                                             ?>
                                             <tr>
@@ -54,12 +60,11 @@ require('top.php');
                                                     <?php echo $row['address']?><br/>
                                                     <?php echo $row['city']?><br/>
                                                     <?php echo $row['pincode']?>
-                                                </td>
-                                                <td class="product-name"><?php echo $row['payment_type']?>
+                                                
                                                 </td>
                                                 <td class="product-name"><?php echo $row['payment_status']?>
                                                 </td>
-                                                <td class="product-name"><?php echo $row['order_status']?>
+                                                <td class="product-name"><?php echo $row['name']?>
                                                 </td>
                                                 
                                                 

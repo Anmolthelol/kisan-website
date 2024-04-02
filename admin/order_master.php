@@ -19,14 +19,13 @@ $res=mysqli_query($con,$sql);
                                                 <th class="product-thumbnail">Order ID</th>
                                                 <th class="product-name"><span class="nobr">Order Date</span></th>
                                                 <th class="product-price"><span class="nobr">Address </span></th>
-                                                <th class="product-stock-stauts"><span class="nobr"> Payment Type </span></th>
                                                 <th class="product-stock-stauts"><span class="nobr"> Payment Status </span></th>
                                                 <th class="product-stock-stauts"><span class="nobr"> Order Status  </span></th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $uid=get_safe_value($con,$_GET['uid']);
+                                            $uid= $_SESSION['USER_ID'];
                                             $sql="select * from orders where uid='$uid'";
                                             $res=mysqli_query($con,$sql);
                                             while($row=mysqli_fetch_assoc($res)){
@@ -40,8 +39,6 @@ $res=mysqli_query($con,$sql);
                                                     <?php echo $row['address']?><br/>
                                                     <?php echo $row['city']?><br/>
                                                     <?php echo $row['pincode']?>
-                                                </td>
-                                                <td class="product-name"><?php echo $row['payment_type']?>
                                                 </td>
                                                 <td class="product-name"><?php echo $row['payment_status']?>
                                                 </td>

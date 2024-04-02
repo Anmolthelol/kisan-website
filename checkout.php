@@ -12,13 +12,13 @@ if (!isset($_SESSION['cart']) || count($_SESSION['cart']) == 0) {
 
 $cart_total = 0;
 
-if(isset($_POST['confirmed'])) {
+if (isset($_POST['confirmed'])) {
     $address = get_safe_value($con, $_POST['address']);
     $city = get_safe_value($con, $_POST['city']);
     $pincode = get_safe_value($con, $_POST['pincode']);
     $payment_type = "";
     // = get_safe_value($con, $_POST['payment_type']);
-    $user_id = $_SESSION['USER_ID'];
+    $uid = $_SESSION['USER_ID'];
     foreach ($_SESSION['cart'] as $key => $val) {
         $productArr = get_product($con, '', '', $key);
         $price = $productArr[0]['price'];
@@ -81,7 +81,7 @@ if(isset($_POST['confirmed'])) {
             <div class="col-md-8">
                 <div class="checkout__inner">
                     <div class="accordion-list">
-                        <div class="accordion bg-light" >
+                        <div class="accordion bg-light">
 
                             <!-- <div class="accordion__title">
                                 Checkout Method
@@ -99,34 +99,34 @@ if(isset($_POST['confirmed'])) {
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="single-input">
-                                                    <input type="text" name="address" id="address" placeholder="Street Address" >
+                                                    <input type="text" name="address" id="address" placeholder="Street Address">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <input type="text" name="city" id="city" placeholder="City/State" >
+                                                    <input type="text" name="city" id="city" placeholder="City/State">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="single-input">
-                                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;"  name="pincode" id="pincode" placeholder="Post code/ zip">
+                                                    <input type="number" pattern="/^-?\d+\.?\d*$/" onKeyPress="if(this.value.length==6) return false;" name="pincode" id="pincode" placeholder="Post code/ zip">
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-6" style="margin-bottom: 20px;">
-                                    <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow"  value="Proceed payment"/>
+                                    <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow" value="Proceed payment" />
                                 </div>
-                               
-                              
+
+
                             </form>
 
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
                             <script>
                                 $(document).ready(function() {
                                     $('#submitBtn').click(function(e) {
-                                        // e.preventDefault(); // Prevent the default form submission behavior
+                                        e.preventDefault(); // Prevent the default form submission behavior
                                         console.log("Form submission prevented");
 
                                         // Retrieve user name and total amount
@@ -140,11 +140,11 @@ if(isset($_POST['confirmed'])) {
                                         let pincode = $('#pincode').val();
 
                                         let validate = false;
-                                        if(address != '' && city != '' && pincode != ''){
+                                        if (address != '' && city != '' && pincode != '') {
                                             validate = true;
                                         }
 
-                                        if(validate){
+                                        if (validate) {
                                             // Make AJAX request to Razorpay payment_process.php
                                             jQuery.ajax({
                                                 type: 'post',
@@ -171,17 +171,23 @@ if(isset($_POST['confirmed'])) {
                                                                 },
                                                                 success: function(result) {
                                                                     // Now, submit the form to order_process.php
-                                                                    
+                                                                        var url = "order_process.php?address=" + encodeURIComponent(address) +
+                                                                        "&city=" + encodeURIComponent(city) +
+                                                                        "&pincode=" + encodeURIComponent(pincode) +
+                                                                        "&payment_id=" + encodeURIComponent(response.razorpay_payment_id);
+
+                                                                    window.location.href = url;
+
                                                                     console.log("Razorpay payment successful");
-                                                                   $('#paymentForm').submit();
-    
+                                                                    // $('#paymentForm').submit();
+
                                                                 }
                                                             });
                                                         }
                                                     };
                                                     var rzp1 = new Razorpay(options);
                                                     rzp1.open();
-                                                  
+
                                                 }
                                             });
                                         } else {
