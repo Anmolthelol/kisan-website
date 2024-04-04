@@ -61,8 +61,8 @@ $coupon_value=$coupon_details['coupon_value'];
                                             </td>
                                             <td class="product-name"><?php echo $row['qty'] * $row['price'] ?>
                                             </td>
-
                                         </tr>
+                                        <?php }?>
                                     <?php 
                                     if($coupon_value!=''){
                                     ?>
