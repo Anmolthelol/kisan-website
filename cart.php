@@ -24,7 +24,8 @@ require('top.php');
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <form action="#">               
+            <form action="#">   
+                <p id= "msg" style= "text-align:center;margin-bottom:8px;"></p>            
                 <div class="table-content table-responsive">
                     <table>
                         <thead>
@@ -39,6 +40,9 @@ require('top.php');
                         </thead>
                         <tbody>
                             <?php
+                            if(isset($_SESSION['cart'])){
+
+                            
                             foreach($_SESSION['cart'] as $key=>$val){
                                 $productArr=get_product($con,'','',$key);
                                 $productArr=get_product($con,'','',$key);
@@ -64,7 +68,17 @@ require('top.php');
                                 <td class="product-subtotal"><?php echo $qty*$price?></td>
                                 <td class="product-remove"><a href="javascript:void(0)" onclick="manage_cart('<?php echo $key ?>','remove')"><i class="icon-trash icons"></i></a></td>
                             </tr>
-                            <?php } ?>
+                            <?php }
+                            }else{
+                                echo "<script>";
+                                echo "var msg = document.getElementById('msg');";
+                                echo "msg.innerHTML = '<strong style=\"text-align: center; text-decoration: underline;color:black;\">CART IS NOT SET</strong>';";
+
+
+
+                                echo "</script>";
+
+                            } ?>
                         </tbody>
                     </table>
                 </div>

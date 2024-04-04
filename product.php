@@ -97,11 +97,11 @@ $get_product = get_product($con, '', '', $product_id);
                                 </ul>
                             </div>
                             <div>
-                                <button> <a class="fr_btn" href="javascript:void(0)"
+                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)"
                                         onclick="manage_cart('<?php echo
                                             $get_product['0']['id'] ?>','add')">Add to Cart</a></button>
 
-                                <button> <a class="fr_btn buy_now" href="javascript:void(0)"
+                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)"
                                         onclick="manage_cart('<?php echo
                                             $get_product['0']['id'] ?>','add','yes')">Buy Now</a></button>
                             </div>
