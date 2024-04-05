@@ -135,6 +135,9 @@ function manage_cart(pid, type,is_checkout) {
             if(type=='update'|| type=='remove'){
                 window.location.href=window.location.href;
             }
+            if(result=='not_avaliable'){
+                alert('Quantity Not Avaliable');
+            }
             else{
             jQuery('.htc__qua').html(result);
             if(is_checkout=='yes'){

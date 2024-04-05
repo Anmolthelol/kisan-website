@@ -10,6 +10,11 @@ $type=get_safe_value($con,$_POST['type']);
 $productSoldQtyByProductId=productSoldQtyByProductId($con,$pid);
 $productQty=productQty($con,$pid);
 $obj=new add_to_cart();
+$pending_qty=$productQty-$productSoldQtyByProductId;
+if($qty>$pending_qty){
+    echo "not_avaliable";
+    die();
+}
 
 
 if($type=='add'){

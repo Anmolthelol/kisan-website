@@ -67,6 +67,12 @@ function productSoldQtyByProductId($con,$pid){
 	$row=mysqli_fetch_assoc($res);
 	return $row['qty'];
 }
+function productQty($con,$pid){
+	$sql="select qty from product where id='$pid'";
+	$res=mysqli_query($con,$sql);
+	$row=mysqli_fetch_assoc($res);
+	return $row['qty'];
+}
 function wishlist_add($con,$uid,$pid){
 	$added_on=date('Y-m-d h:i:s');
 	mysqli_query($con,"insert into wishlist(user_id,product_id,added_on) values('$uid','$pid','$added_on')");
