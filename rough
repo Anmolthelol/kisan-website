@@ -65,4 +65,7 @@ COD <input type="radio" name="payment_type" value="COD" required />
 
 
 
-'
+'session_start();
+echo '<pre>';
+print_r($_SESSION);
+die();

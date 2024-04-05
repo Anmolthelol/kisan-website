@@ -233,6 +233,7 @@ nav.off__canvars--menu ul li ul li a:hover {
 .htc__shopping__cart a i {
     color: #000000;
     font-size: 19px;
+    padding: 5px;
 }
 .htc__shopping__cart a span.htc__qua {
   background: #c43b68;

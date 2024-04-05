@@ -149,5 +149,20 @@ function sort_product_drop(cat_id,site_path){
     var sort_product_id=jQuery('#sort_product_id').val();
     window.location.href=site_path+"categories.php?id="+cat_id+"&sort="+sort_product_id;
 }
-    
+ 
+function wishlist_manage(pid,type){
+	jQuery.ajax({
+		url:'wishlist_manage.php',
+		type:'post',
+		data:'pid='+pid+'&type='+type,
+		success:function(result){
+			result=result.trim();
+			if(result=='not_login'){
+				window.location.href='login_user.php';
+			}else{
+				jQuery('.htc__wishlist').html(result);
+			}
+		}	
+	});	
+}
 	  

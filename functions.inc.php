@@ -61,4 +61,8 @@ function get_scheme($con,$limit=''){
 	}
 	return $data;
 }
+function wishlist_add($con,$uid,$pid){
+	$added_on=date('Y-m-d h:i:s');
+	mysqli_query($con,"insert into wishlist(user_id,product_id,added_on) values('$uid','$pid','$added_on')");
+}
 ?>

@@ -1861,7 +1861,7 @@ select.ht__select {
 }
 .ht__product__dtl p {
     color: #666666;
-    font-size: 16px;
+    font-size: 18px;
     line-height: 26px;
     margin-top: 12px;
 }
@@ -1938,7 +1938,7 @@ select.ht__select {
 }
 .pro__cat__list li a {
     color: #666666;
-    font-size: 16px;
+    font-size: 18px;
     transition: 0.3s;
 }
 .pro__cat__list li a:hover{
