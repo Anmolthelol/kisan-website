@@ -1,5 +1,6 @@
 <?php
 
+
 require('top.php');
 if (isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN'] == 'yes') {
 ?>
@@ -128,8 +129,8 @@ if (isset($_SESSION['USER_LOGIN']) && $_SESSION['USER_LOGIN'] == 'yes') {
 
         </div>
 </section>
-<input type="textbox" id="is_email_verified" />
-<input type="textbox" id="is_mobile_verified" />
+<input type="hidden" id="is_email_verified" />
+<input type="hidden" id="is_mobile_verified" />
 <script>
    function email_sent_otp(){
 			jQuery('#email_error').html('');

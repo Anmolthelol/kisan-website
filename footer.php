@@ -9,7 +9,7 @@
                             <div class="footer">
                                 <h2 class="title__line--2">ABOUT US</h2>
                                 <div class="ft__details">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim</p>
+                                    <p>Welcome to Kisan Suvidha , your goto platform for all things agriculture- related. Our website is dedicated to provide farmers with essential resources ,services and information to enhance their agricultural practice and improve their livelihoods.</p>
                                     <div class="ft__social__link">
                                         <ul class="social__link">
                                             <li><a href="#"><i class="icon-social-twitter icons"></i></a></li>
@@ -28,20 +28,7 @@
                         </div>
                         <!-- End Single Footer Widget -->
                         <!-- Start Single Footer Widget -->
-                        <div class="col-md-2 col-sm-6 col-xs-12 xmt-40">
-                            <div class="footer">
-                                <h2 class="title__line--2">information</h2>
-                                <div class="ft__inner">
-                                    <ul class="ft__list">
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Delivery Information</a></li>
-                                        <li><a href="#">Privacy & Policy</a></li>
-                                        <li><a href="#">Terms  & Condition</a></li>
-                                        <li><a href="#">Manufactures</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <!-- End Single Footer Widget -->
                         <!-- Start Single Footer Widget -->
                         <div class="col-md-2 col-sm-6 col-xs-12 xmt-40 smt-40">
@@ -50,10 +37,10 @@
                                 <div class="ft__inner">
                                     <ul class="ft__list">
                                         <li><a href="#">My Account</a></li>
-                                        <li><a href="cart.html">My Cart</a></li>
-                                        <li><a href="#">Login</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
+                                        <li><a href="cart.php">My Cart</a></li>
+                                        <li><a href="login_user.php">Login</a></li>
+                                        <li><a href="wishlist.php">Wishlist</a></li>
+                                        <li><a href="checkout.php">Checkout</a></li>
                                     </ul>
                                 </div>
                             </div>
