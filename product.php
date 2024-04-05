@@ -10,10 +10,13 @@ if (isset($_POST['review_submit'])) {
 
 	$added_on = date('Y-m-d h:i:s');
 	mysqli_query($con, "insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','" . $_SESSION['USER_ID'] . "','$rating','$review','1','$added_on')");
-    echo "insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','" . $_SESSION['USER_ID'] . "','$rating','$review','1','$added_on')";
 	header('location:product.php?id=' . $product_id);
 	die();
 }
+
+
+$product_review_res = mysqli_query($con, "select users.name,product_review.id,product_review.rating,product_review.review,product_review.added_on from users,product_review where product_review.status=1 and product_review.user_id=users.uid and product_review.product_id='$product_id' order by product_review.added_on desc");
+
 
 ?>
 
@@ -148,10 +151,9 @@ if (isset($_POST['review_submit'])) {
                     <div role="tabpanel" id="review" class="pro__single__content tab-pane fade active show">
                         <div class="pro__tab__content__inner">
                             <?php
-                           // if (mysqli_num_rows($product_review_res) > 0) {
+                            if (mysqli_num_rows($product_review_res) > 0) {
 
-                               // while ($product_review_row = mysqli_fetch_assoc($product_review_res)) {
-                                    
+                                while ($product_review_row = mysqli_fetch_assoc($product_review_res)) {
                             ?>
 
                                     <article class="row">
@@ -159,11 +161,11 @@ if (isset($_POST['review_submit'])) {
                                             <div class="panel panel-default arrow left">
                                                 <div class="panel-body">
                                                     <header class="text-left">
-                                                        <div><span class="comment-rating"> <?php// echo $product_review_row['rating'] ?><!--</span> (<?php //echo $product_review_row['name'] ?>)</div>-->
+                                                        <div><span class="comment-rating"> <?php echo $product_review_row['rating'] ?></span> (<?php echo $product_review_row['name'] ?>)</div>
                                                         <time class="comment-date">
                                                             <?php
-                                                           // $added_on = strtotime($product_review_row['added_on']);
-                                                            //echo date('d M Y', $added_on);
+                                                            $added_on = strtotime($product_review_row['added_on']);
+                                                            echo date('d M Y', $added_on);
                                                             ?>
 
 
@@ -172,17 +174,17 @@ if (isset($_POST['review_submit'])) {
                                                     </header>
                                                     <div class="comment-post">
                                                         <p>
-                                                            <?php// echo $product_review_row['review'] ?>
+                                                            <?php echo $product_review_row['review'] ?>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </article>
-                            <?php //}
-                            //} else {
+                            <?php }
+                            } else {
                                 echo "<h3 class='submit_review_hint'>No review added</h3><br/>";
-                           // }
+                            }
                             ?>
 
 
