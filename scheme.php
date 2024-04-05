@@ -1,6 +1,7 @@
  <?php require('top.php');
-
     $get_scheme = get_scheme($con, '');
+    // $scheme_id = mysqli_real_escape_string($con, $_GET['scheme_id']);
+    // $get_scheme = get_scheme($con, $scheme_id);
 
     ?>
  <div class="body__overlay"></div>
@@ -27,18 +28,7 @@
              <?php if (count($get_scheme) > 0) { ?>
                  <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                      <div class="htc__product__rightidebar">
-                         <div class="htc__grid__top">
-                             <div class="htc__select__option">
-                                 <select class="ht__select">
-                                     <option>Default softing</option>
-                                     <option>Sort by popularity</option>
-                                     <option>Sort by average rating</option>
-                                     <option>Sort by newness</option>
-                                 </select>
-                             </div>
-
-
-                         </div>
+                        
                          <!-- Start Product View -->
                          <div class="row">
                              <div class="shop__grid__view__wrap">
@@ -51,7 +41,7 @@
                                          <div class="col-md-4 col-lg-3 col-sm-4 col-xs-12">
                                              <div class="category">
                                                  <div class="ht__cat__thumb">
-                                                     <a href="scheme.php?id=<?php echo $list['scheme_id'] ?>">
+                                                     <a href="scheme1.php?id=<?php echo $list['scheme_id'] ?>">
                                                          <img src=<?php echo PRODUCT_IMAGE_SITE_PATH . $list['image'] ?> alt="product images">
                                                      </a>
                                                  </div>

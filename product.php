@@ -70,8 +70,10 @@ $product_review_res = mysqli_query($con, "select users.name,product_review.id,pr
                         </h2>
 
 
-                        <p class="pro__info">MRP :
+
+                        <p class="pro__nfo"><s>MRP :
                             <?php echo $get_product['0']['mrp'] ?>
+                            </s> off 20%
                         </p>
                         <p class="pro__info">PRICE :
                             <?php echo $get_product['0']['price'] ?>
