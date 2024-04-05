@@ -61,6 +61,12 @@ function get_scheme($con,$limit=''){
 	}
 	return $data;
 }
+function productSoldQtyByProductId($con,$pid){
+	$sql="select sum(order_details.qty) as qty from order_details,orders where orders.id=order_details.order_id and order_details.product_id=$pid and orders.order_status!=4";
+	$res=mysqli_query($con,$sql);
+	$row=mysqli_fetch_assoc($res);
+	return $row['qty'];
+}
 function wishlist_add($con,$uid,$pid){
 	$added_on=date('Y-m-d h:i:s');
 	mysqli_query($con,"insert into wishlist(user_id,product_id,added_on) values('$uid','$pid','$added_on')");
