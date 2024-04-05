@@ -15,3 +15,10 @@
   font-family: "Poppins";
   cursor: pointer;
 }
+.submit_review_hint{
+  font-size: 16px;
+  color: #c43b68;
+}
+.mt10{
+  margin-top: 10px;
+}

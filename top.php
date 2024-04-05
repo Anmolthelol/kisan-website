@@ -2,6 +2,7 @@
 require('database.php');
 require('functions.inc.php');
 require('add_to_cart.php');
+$wishlist_count = 0;
 $cat_res = mysqli_query($con, "select * from categories where 	status=1 order by categories asc");
 $cat_arr = array();
 while ($row = mysqli_fetch_assoc($cat_res)) {
@@ -10,6 +11,16 @@ while ($row = mysqli_fetch_assoc($cat_res)) {
 $obj = new add_to_cart();
 $totalProduct = $obj->totalProduct();
 
+if (isset($_SESSION['USER_LOGIN'])) {
+    $uid = $_SESSION['USER_ID'];
+
+    if (isset($_GET['wishlist_id'])) {
+        $wid = get_safe_value($con, $_GET['wishlist_id']);
+        mysqli_query($con, "delete from wishlist where id='$wid' and user_id='$uid'");
+    }
+
+    $wishlist_count = mysqli_num_rows(mysqli_query($con, "select product.product_name,product.image,product.price,product.mrp,wishlist.id from product,wishlist where wishlist.product_id=product.id and wishlist.user_id='$uid'"));
+}
 
 ?>
 <!doctype html>
@@ -32,6 +43,21 @@ $totalProduct = $obj->totalProduct();
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <style>
+        .htc__shopping__cart a span.htc__wishlist {
+            background: #c43b68;
+            border-radius: 100%;
+            color: #fff;
+            font-size: 9px;
+            height: 17px;
+            line-height: 19px;
+            position: absolute;
+            right: 27px;
+            text-align: center;
+            top: -4px;
+            width: 17px;
+        }
+    </style>
 
 
 </head>
@@ -49,15 +75,15 @@ $totalProduct = $obj->totalProduct();
                 <div class="container">
                     <div class="row">
                         <div class="menumenu__container clearfix">
-                        <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
+                            <div class="col-lg-1 col-md-1 col-sm-2 col-xs-4">
                                 <div class="logo">
                                     <a href="index.html"><img src="images/logo/kisanlogo.png" alt="Logo">
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-7 col-lg-8 col-sm-5 col-xs-3">
+                            <div class="col-md-7 col-lg-6 col-sm-5 col-xs-3">
                                 <nav class="main__menu__nav hidden-xs hidden-sm">
-                                    <ul  class="main__menu">
+                                    <ul class="main__menu">
                                         <li class="drop"><a href="index.php">Home</a></li>
                                         <?php
                                         foreach ($cat_arr as $list) {
@@ -67,15 +93,10 @@ $totalProduct = $obj->totalProduct();
                                         <?php
                                         }
                                         ?>
-                                        <li><a href="scheme.php" >Scheme</a></li>
+                                        <li><a href="scheme.php">Scheme</a></li>
                                         <li><a href="contact.php">Contact</a></li>
-                                        <?php if (isset($_SESSION['USER_LOGIN'])) {
-                                            echo "<li><a href='logout.php' >Logout</a></li><li><a href='my_order.php'>My Order</a></li>";
-                                        } else {
-                                            echo '<li><a href="login_user.php">login/register</a><li>';
-                                        }
-                                        ?>
-                                        
+
+
                                     </ul>
                                 </nav>
                                 <div class="mobile-menu clearfix visible-xs visible-sm">
@@ -91,20 +112,32 @@ $totalProduct = $obj->totalProduct();
                                             }
                                             ?>
                                             <li><a href="contact.php">contact</a></li>
-                                            
+
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                            <div class="col-md-3 col-lg-2 col-sm-4 col-xs-4">
+                            <div class="col-md-3 col-lg-4 col-sm-4 col-xs-4">
                                 <div class="header__right">
                                     <div class="header__search search search__open">
                                         <a href="#"><i class="icon-magnifier icons"></i></a>
                                     </div>
                                     <div class="header__account">
-                                        
+                                        <?php if (isset($_SESSION['USER_LOGIN'])) {
+                                            echo '<a href="logout.php">Logout</a><a
+                                            href="my_order.php">My Order</a>';
+                                        } else {
+                                            echo '<a href="login_user.php">Login/Register</a>';
+                                        }
+                                        ?>
                                     </div>
                                     <div class="htc__shopping__cart">
+                                        <?php
+                                        if (isset($_SESSION['USER_ID'])) {
+                                        ?>
+                                            <a href="wishlist.php"><i class="icon-heart icons"></i></a>
+                                            <a href="wishlist.php"><span class="htc__wishlist"><?php echo $wishlist_count ?></span></a>
+                                        <?php } ?>
                                         <a class="cart__menu" href="#"><i class="icon-handbag icons"></i></a>
                                         <a href="cart.php"><span class="htc__qua"><?php echo $totalProduct ?></span></a>
                                     </div>

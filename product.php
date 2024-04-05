@@ -1,28 +1,36 @@
-<?php require ('top.php');
+<?php require('top.php');
 $product_id = mysqli_real_escape_string($con, $_GET['id']);
 //$product_name=mysqli_real_escape_string($con,$_GET['id']);
 $get_product = get_product($con, '', '', $product_id);
 //$categories=mysqli_real_escape_string($con,$_GET['id']);
 
+if (isset($_POST['review_submit'])) {
+	$rating = get_safe_value($con, $_POST['rating']);
+	$review = get_safe_value($con, $_POST['review']);
+
+	$added_on = date('Y-m-d h:i:s');
+	mysqli_query($con, "insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','" . $_SESSION['USER_ID'] . "','$rating','$review','1','$added_on')");
+    echo "insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','" . $_SESSION['USER_ID'] . "','$rating','$review','1','$added_on')";
+	header('location:product.php?id=' . $product_id);
+	die();
+}
+
 ?>
-<div class="ht__bradcaump__area"
-    style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
+
+
+
+<div class="ht__bradcaump__area" style="background: rgba(0, 0, 0, 0) url(images/bg/4.jpg) no-repeat scroll center center / cover ;">
     <div class="ht__bradcaump__wrap">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="bradcaump__inner">
                         <nav class="bradcaump-inner">
-                            <a class="breadcrumb-item" href="index.php">Home</a>
-                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <a class="breadcrumb-item"
-                                href="categories.php?id=<?php echo $get_product['0']['category_id'] ?>">
-                                <?php echo $get_product['0']['categories'] ?>
-                            </a>
-                            <span class="brd-separetor"><i class="zmdi zmdi-chevron-right"></i></span>
-                            <span class="breadcrumb-item active">
-                                <?php echo $get_product['0']['product_name'] ?>
-                            </span>
+                            <div class="bradcaump__inner">
+                                <h2 style="color: white; ">Products</h2>
+                            </div>
+                            
+                            
                         </nav>
                     </div>
                 </div>
@@ -37,14 +45,14 @@ $get_product = get_product($con, '', '', $product_id);
     <div class="htc__product__details__top">
         <div class="container">
             <div class="row">
-                <div class="col-md-5 col-lg-5 col-sm-12 col-xs-12">
+                <div class="col-md-3 col-lg-4 col-sm-12 col-xs-12">
                     <div class="htc__product__details__tab__content">
                         <!-- Start Product Big Images -->
                         <div class="product__big__images">
                             <div class="portfolio-full-image tab-content">
                                 <div role="tabpanel" class="tab-pane fade in active" id="img-tab-1">
                                     <img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $get_product['0']['image']
-                                        ?>" alt="full-image">
+                                                ?>" alt="full-image">
                                 </div>
                             </div>
                         </div>
@@ -100,13 +108,11 @@ $get_product = get_product($con, '', '', $product_id);
                                 </ul>
                             </div>
                             <div>
-                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)"
-                                        onclick="manage_cart('<?php echo
-                                            $get_product['0']['id'] ?>','add')">Add to Cart</a></button>
+                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
+                                                                                                                                $get_product['0']['id'] ?>','add')">Add to Cart</a></button>
 
-                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)"
-                                        onclick="manage_cart('<?php echo
-                                            $get_product['0']['id'] ?>','add','yes')">Buy Now</a></button>
+                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
+                                                                                                                                $get_product['0']['id'] ?>','add','yes')">Buy Now</a></button>
                             </div>
                         </div>
                     </div>
@@ -124,8 +130,7 @@ $get_product = get_product($con, '', '', $product_id);
             <div class="col-xs-12">
                 <!-- Start List And Grid View -->
                 <ul class="pro__details__tab" role="tablist">
-                    <li role="presentation" class="description active"><a href="#description" role="tab"
-                            data-toggle="tab">description</a></li>
+                    <li role="presentation" class="description active"><a href="#description" role="tab" data-toggle="tab">description</a></li>
                 </ul>
                 <!-- End List And Grid View -->
             </div>
@@ -143,10 +148,80 @@ $get_product = get_product($con, '', '', $product_id);
                     </div>
                     <!-- End Single Content -->
 
+                    <div role="tabpanel" id="review" class="pro__single__content tab-pane fade active show">
+                        <div class="pro__tab__content__inner">
+                            <?php
+                           // if (mysqli_num_rows($product_review_res) > 0) {
+
+                               // while ($product_review_row = mysqli_fetch_assoc($product_review_res)) {
+                                    
+                            ?>
+
+                                    <article class="row">
+                                        <div class="col-md-12 col-sm-12">
+                                            <div class="panel panel-default arrow left">
+                                                <div class="panel-body">
+                                                    <header class="text-left">
+                                                        <div><span class="comment-rating"> <?php// echo $product_review_row['rating'] ?><!--</span> (<?php //echo $product_review_row['name'] ?>)</div>-->
+                                                        <time class="comment-date">
+                                                            <?php
+                                                           // $added_on = strtotime($product_review_row['added_on']);
+                                                            //echo date('d M Y', $added_on);
+                                                            ?>
+
+
+
+                                                        </time>
+                                                    </header>
+                                                    <div class="comment-post">
+                                                        <p>
+                                                            <?php// echo $product_review_row['review'] ?>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                            <?php //}
+                            //} else {
+                                echo "<h3 class='submit_review_hint'>No review added</h3><br/>";
+                           // }
+                            ?>
+
+
+                            <h3 class="review_heading">Enter your review</h3><br />
+                            <?php
+                            if (isset($_SESSION['USER_LOGIN'])) {
+                            ?>
+                                <div class="row" id="post-review-box" style=>
+                                    <div class="col-md-12">
+                                        <form action="" method="post">
+                                            <select class="form-control" name="rating" required>
+                                                <option value="">Select Rating</option>
+                                                <option>Worst</option>
+                                                <option>Bad</option>
+                                                <option>Good</option>
+                                                <option>Very Good</option>
+                                                <option>Fantastic</option>
+                                            </select> <br />
+                                            <textarea class="form-control" cols="50" id="new-review" name="review" placeholder="Enter your review here..." rows="5"></textarea>
+                                            <div class="text-right mt10">
+                                                <button class="btn btn-success btn-lg" type="submit" name="review_submit">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            <?php } else {
+                                echo "<span class='submit_review_hint'>Please <a href='login_user.php'>login</a> to submit your review</span>";
+                            }
+                            ?>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>
 </section>
 <!-- End Product Description -->
-<?php require ('footer.php') ?>
+<?php require('footer.php') ?>

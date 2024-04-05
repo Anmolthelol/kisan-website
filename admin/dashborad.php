@@ -12,7 +12,7 @@ if(!isset($_SESSION["aid"])){
     <?php require('links.php'); ?>
     <link rel="stylesheet" href="css/dashborad.css">
 </head>
-<title>Kisan Suvidha</title>
+<title>Kisansuvidha Admin</title>
 <body>
     <?php
      require('navbar.php');

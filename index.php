@@ -36,9 +36,14 @@
                                          <img src=<?php echo PRODUCT_IMAGE_SITE_PATH . $list['image'] ?> alt="product images">
                                      </a>
                                  </div>
-
+                                 <div class="fr__hover__info">
+                                     <ul class="product__action">
+                                         <li><a href="javascript:void(0)" onclick="wishlist_manage('<?php echo $list['id'] ?>','add')"><i class="icon-heart icons"></i></a></li>
+                                         <li><a href="javascript:void(0)" onclick="manage_cart('<?php echo $list['id'] ?>','add')"><i class="icon-handbag icons"></i></a></li>
+                                     </ul>
+                                 </div>
                                  <div class="fr__product__inner">
-                                     <h4><a href="product-details.html"><?php echo $list['product_name'] ?></a></h4>
+                                     <h4><a href="product.php?id=<?php echo  $list['id'] ?>"><?php echo $list['product_name'] ?></a></h4>
                                      <ul class="fr__pro__prize">
                                          <li class="old__prize"><?php echo $list['mrp'] ?></li>
                                          <li><?php echo $list['price'] ?></li>
@@ -68,7 +73,7 @@
          <div class="row">
              <div class="product__list clearfix mt--30">
                  <?php
-                    $get_product = get_product($con, 2,'','','','','yes');
+                    $get_product = get_product($con, 2, '', '', '', '', 'yes');
                     foreach ($get_product as $list) {
                     ?>
                      <!-- Start Single Category -->
@@ -78,6 +83,12 @@
                                  <a href="product.php?id=<?php echo $list['id'] ?>">
                                      <img src=<?php echo PRODUCT_IMAGE_SITE_PATH . $list['image'] ?> alt="product images">
                                  </a>
+                             </div>
+                             <div class="fr__hover__info">
+                                 <ul class="product__action">
+                                     <li><a href="javascript:void(0)" onclick="wishlist_manage('<?php echo $list['id'] ?>','add')"><i class="icon-heart icons"></i></a></li>
+                                     <li><a href="javascript:void(0)" onclick="manage_cart('<?php echo $list['id'] ?>','add')"><i class="icon-handbag icons"></i></a></li>
+                                 </ul>
                              </div>
 
                              <div class="fr__product__inner">
