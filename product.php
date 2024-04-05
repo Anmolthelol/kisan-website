@@ -70,6 +70,9 @@ $get_product = get_product($con, '', '', $product_id);
                         </p>
                         <div class="ht__pro__desc">
                             <div class="sin__desc">
+                                <?php
+                                    echo $productSoldQtyByProductId=productSoldQtyByProductId($con,$get_product['0']['id']);
+                                ?>
                                 <p><span>Availability:</span> In Stock</p>
                             </div>
                             <div class="sin__desc">
