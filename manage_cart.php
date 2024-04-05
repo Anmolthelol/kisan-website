@@ -7,7 +7,8 @@ require('add_to_cart.php');
 $pid=get_safe_value($con,$_POST['pid']);
 $qty=get_safe_value($con,$_POST['qty']);
 $type=get_safe_value($con,$_POST['type']);
-
+$productSoldQtyByProductId=productSoldQtyByProductId($con,$pid);
+$productQty=productQty($con,$pid);
 $obj=new add_to_cart();
 
 
