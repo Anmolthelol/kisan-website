@@ -33,21 +33,21 @@ if (isset($_POST['confirmed'])) {
     $order_status = '1';
     $added_on = date('Y-m-d h:i:s');
 
-    $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-    if(isset($_SESSION['COUPON_ID'])){
-        $coupon_id=($_SESSION['COUPON_ID']);
-        $coupon_code=($_SESSION['COUPON_CODE']);
-        $coupon_value=($_SESSION['COUPON_VALUE']);
-        $total_price=$total_price-$coupon_value;
-        unset($_SESSION['COUPON_ID']);
-        unset($_SESSION['COUPON_CODE']);
-        unset($_SESSION['COUPON_VALUE']);
-    }else{
-        $coupon_id='';
-        $coupon_code='';
-        $coupon_value='';
+    // $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+    // if(isset($_SESSION['COUPON_ID'])){
+    //     $coupon_id=($_SESSION['COUPON_ID']);
+    //     $coupon_code=($_SESSION['COUPON_CODE']);
+    //     $coupon_value=($_SESSION['COUPON_VALUE']);
+    //     $total_price=$total_price-$coupon_value;
+    //     unset($_SESSION['COUPON_ID']);
+    //     unset($_SESSION['COUPON_CODE']);
+    //     unset($_SESSION['COUPON_VALUE']);
+    // }else{
+    //     $coupon_id='';
+    //     $coupon_code='';
+    //     $coupon_value='';
 
-    }
+    // }
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid,coupon_id,coupon_code,coupon_value)
     values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid','$coupon_id','$coupon_code','$coupon_value')");
@@ -253,7 +253,7 @@ if (isset($_POST['confirmed'])) {
 
                             <span class="price" id="order_total_price"><?php echo $cart_total ?></span>
 
-                            <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
+                            <!-- <span id="totalPrice" class="price"><?php echo $cart_total ?></span> -->
 
                         </div>
                         <div class="ordre-details__total bilinfo">
@@ -267,36 +267,36 @@ if (isset($_POST['confirmed'])) {
         </div>
     </div>
     <script>
-        function set_coupon(){
-            var coupon_str=jQuery('#coupon_str').val();
-            if(coupon_str!=''){
-                jQuery('#coupon_result').html('');
-                jQuery.ajax({
-                    url:'set_coupon.php',
-                    type:'post',
-                    data:'coupon_str='+coupon_str,
-                    success:function(result){
-                        var data=jQuery.parseJSON(result);
-                        console.log(data.is_error);
-                        if(data.is_error=='yes'){
-                            jQuery('#coupon_box').hide();
-                            jQuery('#coupon_result').html(data.dd);
-                            jQuery('#order_total_price').html(data.result);
-                        }
-                        if(data.is_error=='no'){
-                            jQuery('#coupon_box').show();
-                            jQuery('#coupon_price').html(data.dd);
-                            jQuery('#order_total_price').html(data.result);
-                        }
-                    }
-                });
-            }
-        }
+        // function set_coupon(){
+        //     var coupon_str=jQuery('#coupon_str').val();
+        //     if(coupon_str!=''){
+        //         jQuery('#coupon_result').html('');
+        //         jQuery.ajax({
+        //             url:'set_coupon.php',
+        //             type:'post',
+        //             data:'coupon_str='+coupon_str,
+        //             success:function(result){
+        //                 var data=jQuery.parseJSON(result);
+        //                 console.log(data.is_error);
+        //                 if(data.is_error=='yes'){
+        //                     jQuery('#coupon_box').hide();
+        //                     jQuery('#coupon_result').html(data.dd);
+        //                     jQuery('#order_total_price').html(data.result);
+        //                 }
+        //                 // if(data.is_error=='no'){
+        //                 //     jQuery('#coupon_box').show();
+        //                 //     jQuery('#coupon_price').html(data.dd);
+        //                 //     jQuery('#order_total_price').html(data.result);
+        //                 // }
+        //             }
+        //         });
+        //     }
+        // }
     </script>
     <?php 
-    if(isset($_SESSION['COUPON_ID'])){
-        unset($_SESSION['COUPON_ID']);
-        unset($_SESSION['COUPON_CODE']);
-        unset($_SESSION['COUPON_VALUE']);
-    }
+    // if(isset($_SESSION['COUPON_ID'])){
+    //     unset($_SESSION['COUPON_ID']);
+    //     unset($_SESSION['COUPON_CODE']);
+    //     unset($_SESSION['COUPON_VALUE']);
+    // }
     require('footer.php') ?>
