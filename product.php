@@ -79,11 +79,19 @@ if (isset($_POST['review_submit'])) {
                         <div class="ht__pro__desc">
                             <div class="sin__desc">
                                 <?php
-                                    echo $productSoldQtyByProductId=productSoldQtyByProductId($con,$get_product['0']['id']);
+                                    $productSoldQtyByProductId=productSoldQtyByProductId($con,$get_product['0']['id']);
+                                    $cart_show='yes';
+                                    if($get_product['0']['qty']>$productSoldQtyByProductId){
+                                        $stock='In Stock';                                      
+                                    }else{
+                                        $stock='Not In Stock';
+                                        $cart_show='';
+                                    }
                                 ?>
-                                <p><span>Availability:</span> In Stock</p>
+                                <p><span>Availability:</span><?php echo $stock ?></p>
                             </div>
                             <div class="sin__desc">
+                            <?php if($cart_show!=''){?>
                                 <p><span>Qty:</span>
                                     <select id="qty">
                                         <option>1</option>
@@ -98,6 +106,7 @@ if (isset($_POST['review_submit'])) {
                                         <option>10</option>
                                     </select>
                                 </p>
+                                <?php }?>
                             </div>
                             <div class="sin__desc align--left">
                                 <p><span>Categories:</span></p>
@@ -108,11 +117,13 @@ if (isset($_POST['review_submit'])) {
                                 </ul>
                             </div>
                             <div>
+                                <?php if($cart_show!=''){?>
                                 <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
                                                                                                                                 $get_product['0']['id'] ?>','add')">Add to Cart</a></button>
 
                                 <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
                                                                                                                                 $get_product['0']['id'] ?>','add','yes')">Buy Now</a></button>
+                                <?php }?>
                             </div>
                         </div>
                     </div>
