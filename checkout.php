@@ -34,19 +34,18 @@ if (isset($_POST['confirmed'])) {
     $added_on = date('Y-m-d h:i:s');
 
     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-    if(isset($_SESSION['COUPON_ID'])){
-        $coupon_id=($_SESSION['COUPON_ID']);
-        $coupon_code=($_SESSION['COUPON_CODE']);
-        $coupon_value=($_SESSION['COUPON_VALUE']);
-        $total_price=$total_price-$coupon_value;
+    if (isset($_SESSION['COUPON_ID'])) {
+        $coupon_id = ($_SESSION['COUPON_ID']);
+        $coupon_code = ($_SESSION['COUPON_CODE']);
+        $coupon_value = ($_SESSION['COUPON_VALUE']);
+        $total_price = $total_price - $coupon_value;
         unset($_SESSION['COUPON_ID']);
         unset($_SESSION['COUPON_CODE']);
         unset($_SESSION['COUPON_VALUE']);
-    }else{
-        $coupon_id='';
-        $coupon_code='';
-        $coupon_value='';
-
+    } else {
+        $coupon_id = '';
+        $coupon_code = '';
+        $coupon_value = '';
     }
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid,coupon_id,coupon_code,coupon_value)
@@ -97,11 +96,6 @@ if (isset($_POST['confirmed'])) {
                     <div class="accordion-list">
                         <div class="accordion bg-light">
 
-                            <!-- <div class="accordion__title">
-                                Checkout Method
-                            </div> -->
-
-
                             <div class="">
                                 <h2>
                                     Address Information
@@ -132,7 +126,7 @@ if (isset($_POST['confirmed'])) {
                                 <div class="col-6" style="margin-bottom: 20px;">
                                     <input class="btn btn-primary btn-lg mb-5" type="button" id="submitBtn" name="Buynow" value="Proceed payment" />
                                 </div>
-                            
+
                             </form>
 
                             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -184,7 +178,7 @@ if (isset($_POST['confirmed'])) {
                                                                 },
                                                                 success: function(result) {
                                                                     // Now, submit the form to order_process.php
-                                                                        var url = "order_process.php?address=" + encodeURIComponent(address) +
+                                                                    var url = "order_process.php?address=" + encodeURIComponent(address) +
                                                                         "&city=" + encodeURIComponent(city) +
                                                                         "&pincode=" + encodeURIComponent(pincode) +
                                                                         "&payment_id=" + encodeURIComponent(response.razorpay_payment_id);
@@ -221,7 +215,7 @@ if (isset($_POST['confirmed'])) {
                         <?php
                         $cart_total = 0;
                         foreach ($_SESSION['cart'] as $key => $val) {
-                            $productArr=get_product($con, '', '', $key);
+                            $productArr = get_product($con, '', '', $key);
                             $pname = $productArr[0]['product_name'];
                             $mrp = $productArr[0]['mrp'];
                             $price = $productArr[0]['price'];
@@ -245,58 +239,58 @@ if (isset($_POST['confirmed'])) {
                         <?php } ?>
                     </div>
                     <div class="ordre-details__total" id="coupon_box">
-                            <h5>Coupon Value</h5>
-                            <span class="price" id="coupon_price"></span>
-                        </div>
-                        <div class="ordre-details__total">
-                            <h5>Order total</h5>
-
-                            <span class="price" id="order_total_price"><?php echo $cart_total ?></span>
-
-                            <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
-
-                        </div>
-                        <div class="ordre-details__total bilinfo">
-                            <input type="textbox" id="coupon_str" class="coupon_style mr5"/>
-                            <input type="button" name="submit" class="fv-btn coupon_style" value="Apply Coupon" onclick="set_coupon()"/>
-                        </div>
-                        <div id="coupon_result"></div>
+                        <h5>Coupon Value</h5>
+                        <span class="price" id="coupon_price"></span>
                     </div>
+                    <div class="ordre-details__total">
+                        <h5>Order total</h5>
+
+                        <span class="price" id="order_total_price"><?php echo $cart_total ?></span>
+
+                        <span id="totalPrice" class="price"><?php echo $cart_total ?></span>
+
+                    </div>
+                    <div class="ordre-details__total bilinfo">
+                        <input type="textbox" id="coupon_str" class="coupon_style mr5" />
+                        <input type="button" name="submit" class="fv-btn coupon_style" value="Apply Coupon" onclick="set_coupon()" />
+                    </div>
+                    <div id="coupon_result"></div>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        function set_coupon(){
-            var coupon_str=jQuery('#coupon_str').val();
-            if(coupon_str!=''){
-                jQuery('#coupon_result').html('');
-                jQuery.ajax({
-                    url:'set_coupon.php',
-                    type:'post',
-                    data:'coupon_str='+coupon_str,
-                    success:function(result){
-                        var data=jQuery.parseJSON(result);
-                        console.log(data.is_error);
-                        if(data.is_error=='yes'){
-                            jQuery('#coupon_box').hide();
-                            jQuery('#coupon_result').html(data.dd);
-                            jQuery('#order_total_price').html(data.result);
-                        }
-                        if(data.is_error=='no'){
-                            jQuery('#coupon_box').show();
-                            jQuery('#coupon_price').html(data.dd);
-                            jQuery('#order_total_price').html(data.result);
-                        }
+</div>
+<script>
+    function set_coupon() {
+        var coupon_str = jQuery('#coupon_str').val();
+        if (coupon_str != '') {
+            jQuery('#coupon_result').html('');
+            jQuery.ajax({
+                url: 'set_coupon.php',
+                type: 'post',
+                data: 'coupon_str=' + coupon_str,
+                success: function(result) {
+                    var data = jQuery.parseJSON(result);
+                    console.log(data.is_error);
+                    if (data.is_error == 'yes') {
+                        jQuery('#coupon_box').hide();
+                        jQuery('#coupon_result').html(data.dd);
+                        jQuery('#order_total_price').html(data.result);
                     }
-                });
-            }
+                    if (data.is_error == 'no') {
+                        jQuery('#coupon_box').show();
+                        jQuery('#coupon_price').html(data.dd);
+                        jQuery('#order_total_price').html(data.result);
+                    }
+                }
+            });
         }
-    </script>
-    <?php 
-    if(isset($_SESSION['COUPON_ID'])){
-        unset($_SESSION['COUPON_ID']);
-        unset($_SESSION['COUPON_CODE']);
-        unset($_SESSION['COUPON_VALUE']);
     }
-    require('footer.php') ?>
+</script>
+<?php
+if (isset($_SESSION['COUPON_ID'])) {
+    unset($_SESSION['COUPON_ID']);
+    unset($_SESSION['COUPON_CODE']);
+    unset($_SESSION['COUPON_VALUE']);
+}
+require('footer.php') ?>

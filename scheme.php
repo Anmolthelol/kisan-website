@@ -30,7 +30,7 @@
                          <div class="htc__grid__top">
                              <div class="htc__select__option">
                                  <select class="ht__select">
-                                     <option>Default softing</option>
+                                     <option>Default sorting</option>
                                      <option>Sort by popularity</option>
                                      <option>Sort by average rating</option>
                                      <option>Sort by newness</option>
@@ -60,7 +60,11 @@
                                                      <h4><a href="product-details.html"><?php echo $list['scheme_title'] ?></a></h4>
                                                      <ul class="fr__pro__prize">
                                                          <li class="old__prize"><?php echo $list['applying_fee'] ?></li>
-                                                         <li><?php echo $list['last_date'] ?></li>
+                                                         <?php
+                                                            $last_date = strtotime($list['last_date']);
+                                                            echo date('d M Y', $last_date);
+                                                            ?>
+                                                         </li>
                                                      </ul>
                                                  </div>
                                              </div>

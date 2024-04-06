@@ -252,6 +252,7 @@
     display: flex;
     justify-content: center;
     margin-top: 6px;
+    font-size: larger;
 }
 .fr__pro__prize li {
     color: #313131;
@@ -1842,6 +1843,7 @@ select.ht__select {
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
+    margin-top: 47px;
 }
 .ht__product__dtl h6 {
     color: #100d13;

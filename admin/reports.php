@@ -1,12 +1,12 @@
 <?php
-include("php/database.php"); 
+include("database.php"); 
 ?>
 <!doctype html>
 <html lang="en">
 
 <head>
     <link href="../include/mdbootstrap/css/mdb.min.css" rel="stylesheet">
-    <?php include('include/links.php'); ?>
+    <?php include('links.php'); ?>
     <!-- <link rel="stylesheet" href="css/reports.css"> -->
     <style>
       .a.waves-effect, a.waves-light {
@@ -18,8 +18,8 @@ include("php/database.php");
 
 <body>
     <?php
-    include('include/navbar.php');
-    include('include/slidebar.php');
+    include('navbar.php');
+    include('slidebar.php');
 
 ?>
     <div class="conten-body">

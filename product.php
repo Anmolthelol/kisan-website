@@ -124,7 +124,7 @@ $product_review_res = mysqli_query($con, "select users.name,product_review.id,pr
                                 <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
                                                                                                                                 $get_product['0']['id'] ?>','add')">Add to Cart</a></button>
 
-                                <button> <a class="btn btn-primary btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
+                                <button> <a class="btn btn-warning btn-lg mb-5" href="javascript:void(0)" onclick="manage_cart('<?php echo
                                                                                                                                 $get_product['0']['id'] ?>','add','yes')">Buy Now</a></button>
                                 <?php }?>
                             </div>
@@ -162,8 +162,9 @@ $product_review_res = mysqli_query($con, "select users.name,product_review.id,pr
                     </div>
                     <!-- End Single Content -->
 
-                    <div role="tabpanel" id="review" class="pro__single__content tab-pane fade active show">
-                        <div class="pro__tab__content__inner">
+                    <div role="tabpanel" id="review" class=" tab-pane ">
+                        <div class="" >
+                            <h2 style="padding: 20px;">Review</h2>
                             <?php
                             if (mysqli_num_rows($product_review_res) > 0) {
 
@@ -171,7 +172,8 @@ $product_review_res = mysqli_query($con, "select users.name,product_review.id,pr
                             ?>
 
                                     <article class="row">
-                                        <div class="col-md-12 col-sm-12">
+                                        <div class="col-md-6 col-sm-6">
+
                                             <div class="panel panel-default arrow left">
                                                 <div class="panel-body">
                                                     <header class="text-left">

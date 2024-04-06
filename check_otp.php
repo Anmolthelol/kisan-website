@@ -11,12 +11,5 @@ if($type=='email'){
 		echo "no"; 
 	}
 }
-if($type=='mobile'){
-	if (isset($_SESSION['MOBILE_OTP']) && $otp == $_SESSION['MOBILE_OTP']) {
-        unset($_SESSION['MOBILE_OTP']);
-        echo "done";
-    } else {
-        echo "no";
-    }
-}
+
 ?>
