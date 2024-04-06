@@ -35,7 +35,11 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">our address</h2>
+<<<<<<< HEAD
                                 <p>Surat, Gujarat, India </p>
+=======
+                                <p>102,103-Regent Plaza,Dindoli,Surat</p>
+>>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
                             </div>
                         </div>
                         <div class="address">
@@ -44,7 +48,11 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">openning hour</h2>
+<<<<<<< HEAD
                                 <p>Surat , Gujarat , India </p>
+=======
+                                <p>10:00 AM TO 6:00 PM</p>
+>>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
                             </div>
                         </div>
 
@@ -54,7 +62,7 @@
                             </div>
                             <div class="address__details">
                                 <h2 class="ct__title">Phone Number</h2>
-                                <p>123-6586-587456</p>
+                                <p>+91 9023809530</p>
                             </div>
                         </div>
                     </div>      

@@ -17,7 +17,7 @@
              <div class="col-xs-12">
                  <div class="section__title--2 text-center">
                      <h2 class="title__line" style="padding-top: 50px;">New Arrivals</h2>
-                     <p>But I must explain to you how all this mistaken idea</p>
+                     <p>This Segment is for Newly Added Product </p>
                  </div>
              </div>
          </div>
@@ -45,7 +45,12 @@
                                  <div class="fr__product__inner">
                                      <h4><a href="product.php?id=<?php echo  $list['id'] ?>"><?php echo $list['product_name'] ?></a></h4>
                                      <ul class="fr__pro__prize">
-                                         <li class="old__prize"><?php echo $list['mrp'] ?></li>
+                                         <li class="old__prize"><s>
+                                            <?php echo $list['mrp'] ?>
+                                            </s><br>
+                                            <span style="color:green;"> Off 20%</span>
+                                        
+                                        </li>
                                          <li><?php echo $list['price'] ?></li>
                                      </ul>
                                  </div>
@@ -66,7 +71,7 @@
              <div class="col-xs-12">
                  <div class="section__title--2 text-center">
                      <h2 class="title__line">Best Seller</h2>
-                     <p>But I must explain to you how all this mistaken idea can be solve</p>
+                     <p>This Segment is for Best Selling Product</p>
                  </div>
              </div>
          </div>
@@ -94,7 +99,12 @@
                              <div class="fr__product__inner">
                                  <h4><a href="product-details.html"><?php echo $list['product_name'] ?></a></h4>
                                  <ul class="fr__pro__prize">
-                                     <li class="old__prize"><?php echo $list['mrp'] ?></li>
+                                     <li class="old__prize"><s>
+                                        <?php echo $list['mrp'] ?>
+                                     </s><br>
+                                        <span style="color:green;"> Off 20%</span>
+                                    
+                                    </li>
                                      <li><?php echo $list['price'] ?></li>
                                  </ul>
                              </div>
