@@ -257,10 +257,10 @@ if (isset($_POST['confirmed'])) {
                         <?php } ?>
                     </div>
                     <div class="ordre-details__total" id="coupon_box">
-<<<<<<< HEAD
+
                         <h5>Coupon Value</h5>
                         <span class="price" id="coupon_price"></span>
-=======
+
                             <h5>Coupon Value</h5>
                             <span class="price" id="coupon_price"></span>
                         </div>
@@ -277,7 +277,7 @@ if (isset($_POST['confirmed'])) {
                             <input type="button" name="submit" class="fv-btn coupon_style" value="Apply Coupon" onclick="set_coupon()"/>
                         </div>
                         <div id="coupon_result"></div>
->>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
+
                     </div>
                     <div class="ordre-details__total">
                         <h5>Order total</h5>
@@ -296,7 +296,7 @@ if (isset($_POST['confirmed'])) {
             </div>
         </div>
     </div>
-<<<<<<< HEAD
+
 </div>
 <script>
     function set_coupon() {
@@ -332,7 +332,7 @@ if (isset($_SESSION['COUPON_ID'])) {
     unset($_SESSION['COUPON_VALUE']);
 }
 require('footer.php') ?>
-=======
+
     <script>
         // function set_coupon(){
         //     var coupon_str=jQuery('#coupon_str').val();
@@ -366,5 +366,5 @@ require('footer.php') ?>
     //     unset($_SESSION['COUPON_CODE']);
     //     unset($_SESSION['COUPON_VALUE']);
     // }
-    require('footer.php') ?>
->>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
+    require('footer.php') 
+
