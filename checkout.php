@@ -33,7 +33,7 @@ if (isset($_POST['confirmed'])) {
     $order_status = '1';
     $added_on = date('Y-m-d h:i:s');
 
-<<<<<<< HEAD
+
     $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
     if (isset($_SESSION['COUPON_ID'])) {
         $coupon_id = ($_SESSION['COUPON_ID']);
@@ -48,7 +48,7 @@ if (isset($_POST['confirmed'])) {
         $coupon_code = '';
         $coupon_value = '';
     }
-=======
+
     // $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
     // if(isset($_SESSION['COUPON_ID'])){
     //     $coupon_id=($_SESSION['COUPON_ID']);
@@ -64,7 +64,7 @@ if (isset($_POST['confirmed'])) {
     //     $coupon_value='';
 
     // }
->>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
+
 
     mysqli_query($con, "insert into orders(uid,address,city,pincode,total_price,payment_type,payment_status,order_status,added_on,txnid,coupon_id,coupon_code,coupon_value)
     values('$uid','$address','$city','$pincode','$total_price','$payment_type','$payment_status','$order_status','$added_on','$txnid','$coupon_id','$coupon_code','$coupon_value')");
