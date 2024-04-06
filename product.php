@@ -1,4 +1,6 @@
 <?php require('top.php');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 $product_id = mysqli_real_escape_string($con, $_GET['id']);
 //$product_name=mysqli_real_escape_string($con,$_GET['id']);
 $get_product = get_product($con, '', '', $product_id);
@@ -10,8 +12,8 @@ if (isset($_POST['review_submit'])) {
 
 	$added_on = date('Y-m-d h:i:s');
 	mysqli_query($con, "insert into product_review(product_id,user_id,rating,review,status,added_on) values('$product_id','" . $_SESSION['USER_ID'] . "','$rating','$review','1','$added_on')");
-	header('location:product.php?id=' . $product_id);
-	die();
+	//header('location:product.php?id=' . $product_id);
+    //header('location:product.php');
 }
 
 

@@ -61,11 +61,12 @@ $res = mysqli_query($con, $sql);
                                             <td><?php echo $row['scheme_title'] ?></td>
                                             <td><?php echo $row['description'] ?></td>
                                             <td><img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>" /></td>
+                                            <td><?php echo $row['applying_fee'] ?></td>
                                             <td><?php
                                                 $last_date = strtotime($row['last_date']);
                                                 echo date('d M Y', $last_date);
                                                 ?></td>
-                                            <td><?php echo $row['last_date'] ?></td>
+                                           
                                             <td><?php echo $row['url'] ?></td>
                                             <td>
                                                 <?php

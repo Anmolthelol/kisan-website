@@ -72,25 +72,7 @@ if (isset($_POST['update_order_status'])) {
                                 // } 
                                 ?>
 
-                                    <?php
-                                    if($coupon_value!=''){
-                                    ?>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                        <td class="product-name">Coupon Value
-                                        </td>
-                                        <td class="product-name"><?php echo $coupon_value."($coupon_code)" ?>
-                                        </td>
-                                    </tr>
-                                    <?php }?>
-                                    <tr>
-                                        <td colspan="3"></td>
-                                        <td class="product-name">TOTAL PRICE
-                                        </td>
-                                        <td class="product-name"><?php echo $total_price-$coupon_value ?>
-                                        </td>
-                                    </tr>
-                                    ?>
+                                    
                                 </tbody>
                             </table>
                             <div id="address_details">

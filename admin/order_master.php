@@ -26,8 +26,10 @@ $res = mysqli_query($con, $sql);
                                 <tbody>
                                     <?php
                                    
-                                        $uid = $_SESSION['USER_ID'];
-                                    
+                                        //$uid = $_SESSION['USER_ID'];
+                                       // echo "<pre>";
+                                        //print_r($_SESSION);
+                                        //die();
                                         //$uid=get_safe_value($con,$_GET['id']);
                                         // $sql="select * from orders where uid='$uid'";
 

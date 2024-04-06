@@ -28,7 +28,6 @@
              <?php if (count($get_scheme) > 0) { ?>
                  <div class="col-lg-12  col-md-12 col-sm-12 col-xs-12">
                      <div class="htc__product__rightidebar">
-<<<<<<< HEAD
                          <div class="htc__grid__top">
                              <div class="htc__select__option">
                                  <select class="ht__select">
@@ -41,9 +40,7 @@
 
 
                          </div>
-=======
-                        
->>>>>>> aebb797d3c8254f0a25b7f6ba3f654cc2d233d5a
+
                          <!-- Start Product View -->
                          <div class="row">
                              <div class="shop__grid__view__wrap">
